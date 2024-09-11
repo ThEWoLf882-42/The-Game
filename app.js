@@ -135,10 +135,11 @@ class SceneApp {
 
 	#animate() {
 		const now = performance.now();
+		const delta = (now - this.#lastFrameTime) / 1000; // Time in seconds
 		if (now - this.#lastFrameTime > 1000 / this.#frameRate) {
 			this.#lastFrameTime = now;
 			this.#update();
-			if (this.#mixer) this.#mixer.update(0.01);
+			if (this.#mixer) this.#mixer.update(delta);
 			if (this.#hasChanges) this.#render();
 			this.#hasChanges = false;
 		}
