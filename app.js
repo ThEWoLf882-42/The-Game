@@ -19,7 +19,7 @@ class SceneApp {
 
 	#velocity = 20;
 	#ballDirection = new THREE.Vector3();
-	#minDir = 0.8;
+	#minDir = 0.6;
 	#playerDirection = 0;
 	#player2Direction = 0;
 	#hasChanges = false;
@@ -99,7 +99,7 @@ class SceneApp {
 	#loadModelGLTF() {
 		const loader = new GLTFLoader().setPath('models/');
 		loader.load(
-			'Game Play.gltf', // Using GLTF format
+			'Game Play.gltf',
 			async gltf => {
 				const model = gltf.scene;
 				await this.#renderer.compileAsync(
@@ -135,7 +135,7 @@ class SceneApp {
 
 	#animate() {
 		const now = performance.now();
-		const delta = (now - this.#lastFrameTime) / 1000; // Time in seconds
+		const delta = (now - this.#lastFrameTime) / 1000;
 		if (now - this.#lastFrameTime > 1000 / this.#frameRate) {
 			this.#lastFrameTime = now;
 			this.#update();
