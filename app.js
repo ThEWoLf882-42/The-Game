@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
+import { log } from 'three/webgpu';
 
 class SceneApp {
 	#camera;
@@ -157,20 +158,55 @@ class SceneApp {
 		}
 
 		if (this.#player) {
-			this.#player.position.y += this.#velocity * this.#playerDirection;
-			this.#playerBox.setFromObject(
-				this.#player.getObjectByName('Racket')
+			this.#handelePlayerMovement(
+				this.#player,
+				this.#playerBox,
+				this.#playerDirection,
+				'Racket'
 			);
-			this.#hasChanges = true;
 		}
 
 		if (this.#player2) {
-			this.#player2.position.y += this.#velocity * this.#player2Direction;
-			this.#player2Box.setFromObject(
-				this.#player2.getObjectByName('Racket001')
+			this.#handelePlayerMovement(
+				this.#player2,
+				this.#player2Box,
+				this.#player2Direction,
+				'Racket001'
 			);
-			this.#hasChanges = true;
 		}
+	}
+
+	#handelePlayerMovement(player, playerBox, playerDirection, name) {
+		const wallBox =
+			playerDirection === 1 ? this.#wallsBoxes[0] : this.#wallsBoxes[1];
+
+		playerBox.setFromObject(player.getObjectByName(name));
+		const target = player.position.y + this.#velocity * playerDirection;
+		for (
+			;
+			player.position.y !== target;
+			player.position.y += playerDirection
+		) {
+			if (playerBox.intersectsBox(wallBox)) break;
+		}
+		this.#hasChanges = true;
+	}
+
+	#checkPlayerCollisions(player, playerDirection, name) {
+		const newPlayer = player.clone();
+		const wallBox =
+			playerDirection === 1 ? this.#wallsBoxes[0] : this.#wallsBoxes[1];
+
+		newPlayer.position.y += this.#velocity * playerDirection;
+
+		const playerBox = new THREE.Box3().setFromObject(
+			newPlayer.getObjectByName(name)
+		);
+
+		if (playerBox.intersectsBox(wallBox)) {
+			return false;
+		}
+		return true;
 	}
 
 	#checkCollisions() {
@@ -241,23 +277,43 @@ class SceneApp {
 	}
 
 	moveUp() {
-		this.#playerDirection = -1;
-		this.#hasChanges = true;
+		if (this.#checkPlayerCollisions(this.#player, -1, 'Racket')) {
+			this.#playerDirection = -1;
+			this.#hasChanges = true;
+		} else {
+			this.#playerDirection = 0;
+			this.#hasChanges = true;
+		}
 	}
 
 	moveDown() {
-		this.#playerDirection = 1;
-		this.#hasChanges = true;
+		if (this.#checkPlayerCollisions(this.#player, 1, 'Racket')) {
+			this.#playerDirection = 1;
+			this.#hasChanges = true;
+		} else {
+			this.#playerDirection = 0;
+			this.#hasChanges = true;
+		}
 	}
 
 	moveUp2() {
-		this.#player2Direction = -1;
-		this.#hasChanges = true;
+		if (this.#checkPlayerCollisions(this.#player2, -1, 'Racket001')) {
+			this.#player2Direction = -1;
+			this.#hasChanges = true;
+		} else {
+			this.#player2Direction = 0;
+			this.#hasChanges = true;
+		}
 	}
 
 	moveDown2() {
-		this.#player2Direction = 1;
-		this.#hasChanges = true;
+		if (this.#checkPlayerCollisions(this.#player2, 1, 'Racket001')) {
+			this.#player2Direction = 1;
+			this.#hasChanges = true;
+		} else {
+			this.#player2Direction = 0;
+			this.#hasChanges = true;
+		}
 	}
 
 	startBall() {
