@@ -26,9 +26,9 @@ class SceneApp {
 	#scoreL = 0;
 	#scoreR = 0;
 
-	#velocity = 20;
+	#velocity = 22;
 	#ballDirection = new THREE.Vector3();
-	#minDir = 0.6;
+	#minDir = 0.69;
 	#playerDirection = 0;
 	#player2Direction = 0;
 	#hasChanges = false;
