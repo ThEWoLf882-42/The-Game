@@ -237,18 +237,16 @@ class SceneApp {
 			.clone()
 			.sub(player.position)
 			.normalize();
-		this.#ballDirection
-			.set(
-				direction.x * Math.abs(this.#ballDirection.x),
-				direction.y * Math.abs(this.#ballDirection.y),
-				0
-			)
-			.normalize()
-			.multiplyScalar(this.#velocity);
-
-		if (this.#ballDirection.length() < this.#minDir) {
-			this.#ballDirection.setLength(this.#minDir);
-		}
+		direction.x =
+			Math.sign(direction.x) *
+			Math.max(Math.abs(direction.x), this.#minDir);
+		direction.y =
+			Math.sign(direction.y) *
+			Math.max(Math.abs(direction.y), this.#minDir);
+		direction.z =
+			Math.sign(direction.z) *
+			Math.max(Math.abs(direction.z), this.#minDir);
+		this.#ballDirection = direction.multiplyScalar(this.#velocity);
 	}
 
 	#handleBallWallCollision() {
@@ -316,13 +314,15 @@ class SceneApp {
 	}
 
 	startBall() {
-		let x = this.#random(-1.0, 1.0) * this.#velocity;
-		let y = this.#random(-1.0, 1.0) * this.#velocity;
+		let x = this.#random(-1.0, 1.0);
+		let y = this.#random(-1.0, 1.0);
 
 		if (Math.abs(x) < this.#minDir) x = Math.sign(x) * this.#minDir;
 		if (Math.abs(y) < this.#minDir) y = Math.sign(y) * this.#minDir;
 
-		this.#ballDirection = new THREE.Vector3(x, y);
+		this.#ballDirection = new THREE.Vector3(x, y).multiplyScalar(
+			this.#velocity
+		);
 		this.#hasChanges = true;
 	}
 
