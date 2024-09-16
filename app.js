@@ -196,9 +196,55 @@ class SceneApp {
 		this.#updateScoreR('0');
 	}
 
-	#updateScoreL(newText) {}
+	#updateScoreL(newText) {
+		if (this.#font && this.#scoreLText) {
+			this.#scoreLText.geometry.dispose();
 
-	#updateScoreR(newText) {}
+			const newTextGeometry = new TextGeometry(newText, {
+				font: this.#font,
+				size: 2,
+				depth: 0,
+			});
+			newTextGeometry.computeBoundingBox();
+
+			const boundingBox = newTextGeometry.boundingBox;
+			const xOffset = (boundingBox.max.x - boundingBox.min.x) / 2;
+			const yOffset = (boundingBox.max.y - boundingBox.min.y) / 2;
+
+			newTextGeometry.translate(-xOffset, -yOffset, 0);
+
+			this.#scoreLText.geometry = newTextGeometry;
+
+			this.#scoreLText.rotation.set(0.296706, Math.PI, Math.PI);
+
+			this.#hasChanges = true;
+		}
+	}
+
+	#updateScoreR(newText) {
+		if (this.#font && this.#scoreRText) {
+			this.#scoreRText.geometry.dispose();
+
+			const newTextGeometry = new TextGeometry(newText, {
+				font: this.#font,
+				size: 2,
+				depth: 0,
+			});
+			newTextGeometry.computeBoundingBox();
+
+			const boundingBox = newTextGeometry.boundingBox;
+			const xOffset = (boundingBox.max.x - boundingBox.min.x) / 2;
+			const yOffset = (boundingBox.max.y - boundingBox.min.y) / 2;
+
+			newTextGeometry.translate(-xOffset, -yOffset, 0);
+
+			this.#scoreRText.geometry = newTextGeometry;
+
+			this.#scoreRText.rotation.set(0.296706, Math.PI, Math.PI);
+
+			this.#hasChanges = true;
+		}
+	}
 
 	#handelePlayerMovement(player, playerBox, playerDirection, name) {
 		const wallBox =
@@ -298,8 +344,6 @@ class SceneApp {
 		this.#goalLBox.setFromObject(this.#goalL);
 		this.#scoreLText = model.getObjectByName('ScoreL');
 		this.#scoreRText = model.getObjectByName('ScoreR');
-
-		console.log(this.#scoreLText);
 
 		this.#resetScore();
 	}
