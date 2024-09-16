@@ -2,6 +2,10 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+import { TTFLoader } from 'three/addons/loaders/TTFLoader.js';
+import { depth } from 'three/webgpu';
 
 class SceneApp {
 	#camera;
@@ -9,6 +13,8 @@ class SceneApp {
 	#renderer;
 	#controls;
 	#mixer;
+	#font;
+	#ttf;
 
 	#ball;
 	#player;
@@ -16,6 +22,8 @@ class SceneApp {
 	#goalR;
 	#goalL;
 	#walls;
+	#scoreLText;
+	#scoreRText;
 
 	#velocity = 20;
 	#ballDirection = new THREE.Vector3();
@@ -44,6 +52,7 @@ class SceneApp {
 		this.#createRenderer();
 		this.#createControls();
 		this.#loadEnvironment();
+		this.#loadFont();
 		window.addEventListener('resize', () => this.#onWindowResize());
 		this.#animate();
 	}
@@ -122,6 +131,14 @@ class SceneApp {
 		);
 	}
 
+	#loadFont() {
+		this.#ttf = new TTFLoader();
+
+		this.#ttf.load('fonts/Gabriela-Regular.ttf', ttf => {
+			this.#font = new FontLoader().parse(ttf);
+		});
+	}
+
 	#onWindowResize() {
 		this.#camera.aspect = window.innerWidth / window.innerHeight;
 		this.#camera.updateProjectionMatrix();
@@ -174,6 +191,15 @@ class SceneApp {
 			);
 		}
 	}
+
+	#resetScore() {
+		this.#updateScoreL('0');
+		this.#updateScoreR('0');
+	}
+
+	#updateScoreL(newText) {}
+
+	#updateScoreR(newText) {}
 
 	#handelePlayerMovement(player, playerBox, playerDirection, name) {
 		const wallBox =
@@ -271,6 +297,12 @@ class SceneApp {
 		);
 		this.#goalRBox.setFromObject(this.#goalR);
 		this.#goalLBox.setFromObject(this.#goalL);
+		this.#scoreLText = model.getObjectByName('ScoreL');
+		this.#scoreRText = model.getObjectByName('ScoreR');
+
+		console.log(this.#scoreLText);
+
+		this.#resetScore();
 	}
 
 	moveUp() {
