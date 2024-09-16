@@ -23,6 +23,8 @@ class SceneApp {
 	#walls;
 	#scoreLText;
 	#scoreRText;
+	#scoreL = 0;
+	#scoreR = 0;
 
 	#velocity = 20;
 	#ballDirection = new THREE.Vector3();
@@ -325,8 +327,10 @@ class SceneApp {
 	}
 
 	#handleBallGoalCollision(goal) {
-		console.log(`${goal} hit`);
+		goal === 'goalR' ? this.#scoreR++ : this.#scoreL++;
 		this.#ball.position.set(0, 0, 0);
+		this.#updateScoreL(String(this.#scoreL));
+		this.#updateScoreR(String(this.#scoreR));
 		this.startBall();
 	}
 
