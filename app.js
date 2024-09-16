@@ -5,7 +5,6 @@ import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TTFLoader } from 'three/addons/loaders/TTFLoader.js';
-import { depth } from 'three/webgpu';
 
 class SceneApp {
 	#camera;
