@@ -26,7 +26,7 @@ class SceneApp {
 	#scoreL = 0;
 	#scoreR = 0;
 
-	#velocity = 22;
+	#velocity = 30;
 	#ballDirection = new THREE.Vector3();
 	#minDir = 0.69;
 	#playerDirection = 0;
@@ -327,7 +327,7 @@ class SceneApp {
 	}
 
 	#handleBallGoalCollision(goal) {
-		goal === 'goalR' ? this.#scoreR++ : this.#scoreL++;
+		goal === 'goalR' ? this.#scoreL++ : this.#scoreR++;
 		this.#ball.position.set(0, 0, 0);
 		this.#updateScoreL(String(this.#scoreL));
 		this.#updateScoreR(String(this.#scoreR));
