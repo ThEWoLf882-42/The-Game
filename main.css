@@ -14,8 +14,7 @@ body {
 	height: 100%;
 	z-index: -1;
 }
-
-.vs-1-icon {
+.rectangle-icon {
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -30,33 +29,11 @@ body {
 }
 .home1 {
 	position: absolute;
-	top: calc(50% - 13.5px);
-	left: calc(50% - 24.5px);
-	line-height: 150%;
-}
-.square1 {
-	position: absolute;
-	height: 83.47%;
-	width: 83.47%;
-	top: 8.26%;
-	right: 8.26%;
-	bottom: 8.26%;
-	left: 8.26%;
-	overflow: hidden;
-}
-.square {
-	width: 121px;
-	position: relative;
-	height: 121px;
-	font-size: 17px;
-}
-.home2 {
-	position: absolute;
 	top: calc(50% - 11.5px);
 	left: calc(50% - 21.5px);
 	line-height: 150%;
 }
-.square3 {
+.square1 {
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -66,7 +43,7 @@ body {
 	left: 0%;
 	overflow: hidden;
 }
-.square2 {
+.square {
 	width: 81px;
 	position: relative;
 	height: 81px;
@@ -85,18 +62,25 @@ body {
 }
 .home4 {
 	position: absolute;
-	top: calc(50% - 11.5px);
-	left: calc(50% - 45.5px);
+	top: calc(50% - 13.5px);
+	left: calc(50% - 52.5px);
 	line-height: 150%;
 }
 .square7 {
 	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0%;
-	right: 0%;
-	bottom: 0%;
-	left: 0%;
+	height: 83.47%;
+	width: 83.47%;
+	top: 8.26%;
+	right: 8.26%;
+	bottom: 8.26%;
+	left: 8.26%;
+}
+.square6 {
+	width: 121px;
+	position: relative;
+	height: 121px;
+	cursor: pointer;
+	font-size: 17px;
 }
 .home {
 	width: 100%;
