@@ -1,10 +1,15 @@
 import * as THREE from 'three';
+import { HOME, GAME, CHAT, LEADERBOARD } from './home';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TTFLoader } from 'three/addons/loaders/TTFLoader.js';
+import {
+	CSS2DRenderer,
+	CSS2DObject,
+} from 'three/addons/renderers/CSS2DRenderer.js';
 
 class Game {
 	#camera;
@@ -14,6 +19,8 @@ class Game {
 	#mixer;
 	#font;
 	#ttf;
+	#css2DRenderer;
+	#css2DObject;
 
 	#ball;
 	#player;
@@ -51,6 +58,7 @@ class Game {
 		this.#createScene();
 		this.#createCamera();
 		this.#createRenderer();
+		this.#addDOMElem();
 		this.#createControls();
 		this.#loadEnvironment();
 		this.#loadFont();
@@ -80,6 +88,22 @@ class Game {
 		this.#renderer.toneMapping = THREE.ACESFilmicToneMapping;
 		this.#renderer.toneMappingExposure = 1;
 		document.body.appendChild(this.#renderer.domElement);
+
+		this.#css2DRenderer = new CSS2DRenderer();
+		this.#css2DRenderer.setSize(window.innerWidth, window.innerHeight);
+		this.#css2DRenderer.domElement.style.position = 'absolute';
+		this.#css2DRenderer.domElement.style.top = '0';
+		document.body.appendChild(this.#css2DRenderer.domElement);
+	}
+
+	#addDOMElem() {
+		const homeContainer = document.createElement('div');
+		homeContainer.className = 'home';
+		homeContainer.innerHTML = CHAT;
+
+		this.#css2DObject = new CSS2DObject(homeContainer);
+		this.#css2DObject.position.set(0, 10, 0);
+		this.#scene.add(this.#css2DObject);
 	}
 
 	#createControls() {
@@ -162,6 +186,8 @@ class Game {
 			this.#hasChanges = false;
 		}
 		requestAnimationFrame(() => this.#animate());
+		this.#css2DRenderer.render(this.#scene, this.#camera);
+		this.#renderer.render(this.#scene, this.#camera);
 	}
 
 	#update() {
