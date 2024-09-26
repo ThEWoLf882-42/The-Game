@@ -99,7 +99,7 @@ class Game {
 	#addDOMElem() {
 		const homeContainer = document.createElement('div');
 		homeContainer.className = 'home';
-		homeContainer.innerHTML = CHAT;
+		homeContainer.innerHTML = HOME;
 
 		this.#css2DObject = new CSS2DObject(homeContainer);
 		this.#css2DObject.position.set(0, 10, 0);
