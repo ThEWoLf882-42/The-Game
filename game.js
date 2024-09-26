@@ -20,7 +20,8 @@ class Game {
 	#font;
 	#ttf;
 	#css2DRenderer;
-	#css2DObject;
+	#css2DObject = {};
+	#home;
 
 	#ball;
 	#player;
@@ -51,6 +52,12 @@ class Game {
 	#frameRate = 60;
 
 	constructor() {
+		this.#home = {
+			home: HOME,
+			game: GAME,
+			chat: CHAT,
+			leaderboard: LEADERBOARD,
+		};
 		this.#init();
 	}
 
@@ -95,12 +102,16 @@ class Game {
 	}
 
 	#addDOMElem() {
+		this.#addHomeCss2d();
+	}
+
+	#addHomeCss2d() {
 		const homeContainer = document.createElement('div');
 		homeContainer.className = 'home';
 		homeContainer.innerHTML = HOME;
 
-		this.#css2DObject = new CSS2DObject(homeContainer);
-		this.#scene.add(this.#css2DObject);
+		this.#css2DObject.home = new CSS2DObject(homeContainer);
+		this.#scene.add(this.#css2DObject.home);
 	}
 
 	#createControls() {
@@ -455,6 +466,10 @@ class Game {
 			if (object.geometry) object.geometry.dispose();
 			if (object.material) object.material.dispose();
 		});
+	}
+
+	switchHome(home) {
+		this.#css2DObject.home.element.innerHTML = this.#home[home];
 	}
 }
 

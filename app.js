@@ -1,5 +1,7 @@
 import game from './game';
 
+const homeContainer = document.querySelector('.home');
+
 const keyState = new Set();
 const KEY_UP = 'ArrowUp';
 const KEY_DOWN = 'ArrowDown';
@@ -27,3 +29,11 @@ function updateMovement() {
 	if (keyState.has(KEY_W)) game.moveUp();
 	if (keyState.has(KEY_S)) game.moveDown();
 }
+
+homeContainer.addEventListener('click', e => {
+	const btn = e.target.closest('.square2');
+	if (btn) {
+		const id = btn.dataset.id;
+		game.switchHome(id);
+	}
+});
