@@ -163,8 +163,8 @@ body {
 }
 .paner {
 	position: absolute;
-	bottom: 50%;
-	width: 1394px;
+	bottom: calc(50%);
+	width: 72.7%;
 	height: 57px;
 	text-align: center;
 	font-size: 30px;
