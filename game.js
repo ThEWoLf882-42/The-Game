@@ -91,8 +91,6 @@ class Game {
 
 		this.#css2DRenderer = new CSS2DRenderer();
 		this.#css2DRenderer.setSize(window.innerWidth, window.innerHeight);
-		this.#css2DRenderer.domElement.style.position = 'absolute';
-		this.#css2DRenderer.domElement.style.top = '0';
 		document.body.appendChild(this.#css2DRenderer.domElement);
 	}
 
@@ -102,7 +100,6 @@ class Game {
 		homeContainer.innerHTML = HOME;
 
 		this.#css2DObject = new CSS2DObject(homeContainer);
-		this.#css2DObject.position.set(0, 10, 0);
 		this.#scene.add(this.#css2DObject);
 	}
 
