@@ -1,5 +1,8 @@
 import * as THREE from 'three';
+
 import { HOME, GAME, CHAT, LEADERBOARD } from './home';
+import { PANER } from './Paner';
+
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
@@ -102,16 +105,26 @@ class Game {
 	}
 
 	#addDOMElem() {
-		this.#addHomeCss2d();
+		this.#addHomeCss2D();
+		this.#addPanerCss2D();
 	}
 
-	#addHomeCss2d() {
+	#addHomeCss2D() {
 		const homeContainer = document.createElement('div');
 		homeContainer.className = 'home';
 		homeContainer.innerHTML = HOME;
 
 		this.#css2DObject.home = new CSS2DObject(homeContainer);
 		this.#scene.add(this.#css2DObject.home);
+	}
+
+	#addPanerCss2D() {
+		const panerContainer = document.createElement('div');
+		panerContainer.className = 'paner';
+		panerContainer.innerHTML = PANER;
+
+		this.#css2DObject.paner = new CSS2DObject(panerContainer);
+		this.#scene.add(this.#css2DObject.paner);
 	}
 
 	#createControls() {

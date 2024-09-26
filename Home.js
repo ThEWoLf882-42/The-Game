@@ -108,5 +108,4 @@ export const LEADERBOARD = `<div class="property-11">
 			<div class="home16">Leaderboard</div>
 		</div>
 	</div>
-</div>
-`;
+</div>`;

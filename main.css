@@ -138,3 +138,37 @@ body {
 	color: #d0c3a9;
 	font-family: Gabriela;
 }
+
+.paner-1-icon {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	max-width: 100%;
+	overflow: hidden;
+	max-height: 100%;
+	object-fit: cover;
+}
+.champpong {
+	font-family: Frijole;
+}
+.adjust-the-volume-container {
+	position: absolute;
+	top: calc(50% - 16.5px);
+	left: calc(50% - 207px);
+	line-height: 150%;
+}
+.paner {
+	position: absolute;
+	bottom: 50%;
+	width: 1394px;
+	height: 57px;
+	text-align: center;
+	font-size: 30px;
+	color: #000;
+	font-family: Gabriela;
+	color: #000;
+}

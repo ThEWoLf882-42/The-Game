@@ -2,5 +2,5 @@ node_modules
 Game Play.bin
 Game Play.gltf
 *.zip
-test.html
+test.*
 .DS_Store
