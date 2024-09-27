@@ -172,3 +172,163 @@ body {
 	font-family: Gabriela;
 	color: #000;
 }
+
+.hb-icon {
+	width: 167.5px;
+	position: absolute;
+	margin: 0 !important;
+	top: 0px;
+	right: 0.5px;
+	height: 41.4px;
+	overflow: hidden;
+	flex-shrink: 0;
+	object-fit: cover;
+	z-index: 0;
+}
+.settings1 {
+	position: relative;
+	line-height: 150%;
+	z-index: 1;
+}
+.settings {
+	position: absolute;
+	top: calc(-50% + 100px);
+	left: calc(50% - 100px);
+	width: 167px;
+	height: 41px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 0px 20px;
+	box-sizing: border-box;
+	gap: 10px;
+	text-align: center;
+	font-size: 24px;
+	color: #d0c3a9;
+	font-family: Gabriela;
+}
+.rectangle-icon17 {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	max-width: 100%;
+	overflow: hidden;
+	max-height: 100%;
+	object-fit: cover;
+}
+.setting-1 {
+	position: absolute;
+	top: calc(50% - 22.5px);
+	left: calc(50% - 132px);
+	line-height: 150%;
+}
+.setting-frame {
+	width: 424.5px;
+	position: relative;
+	height: 40.5px;
+}
+.setting-11 {
+	position: absolute;
+	top: calc(50% - 22.5px);
+	left: calc(50% - 107.5px);
+	line-height: 150%;
+}
+.fa-icon1 {
+	position: absolute;
+	top: 0px;
+	left: calc(50% - 13.95px);
+	width: 27.9px;
+	height: 20.3px;
+	overflow: hidden;
+	object-fit: cover;
+}
+.fa-icon2 {
+	position: absolute;
+	bottom: -0.05px;
+	left: calc(50% - 13.95px);
+	width: 27.9px;
+	height: 20.3px;
+	overflow: hidden;
+	object-fit: cover;
+}
+.fa-icon {
+	position: absolute;
+	height: 100%;
+	top: -0.93%;
+	bottom: 0.93%;
+	left: 30px;
+	width: 27.9px;
+}
+.factor-authentication {
+	position: absolute;
+	height: 78.52%;
+	width: 83.39%;
+	top: 11.11%;
+	left: 16.61%;
+	line-height: 150%;
+	display: flex;
+	align-items: center;
+}
+.fa {
+	width: 424.5px;
+	position: relative;
+	height: 40.5px;
+	text-align: left;
+}
+.setting-12 {
+	position: absolute;
+	top: calc(50% - 22.5px);
+	left: calc(50% - 49.5px);
+	line-height: 150%;
+}
+.log-out {
+	width: 424.5px;
+	position: relative;
+	height: 40.5px;
+	cursor: pointer;
+}
+.setting-frame-parent {
+	position: absolute;
+	top: 130.5px;
+	left: 144px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4.5px;
+}
+.settings2 {
+	position: absolute;
+	top: calc(50% - 34.75px);
+	left: calc(50% - 85.9px);
+	line-height: 150%;
+}
+.settings-wrapper {
+	position: absolute;
+	top: 32.25px;
+	left: 142.5px;
+	width: 425.3px;
+	height: 93px;
+	overflow: hidden;
+	font-size: 45px;
+	color: #6b3783;
+}
+.sbook-1 {
+	width: 726px;
+	position: absolute;
+	height: 684.8px;
+	top: calc(2%);
+	right: calc(50% - 363px);
+	overflow: hidden;
+	max-width: 90%;
+	max-height: 90%;
+	text-align: center;
+	font-size: 30px;
+	color: #4f483f;
+	font-family: Gabriela;
+}

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 
 import { HOME, GAME, CHAT, LEADERBOARD } from './home';
 import { PANER } from './Paner';
+import { SBOOK, SETTINGS } from './Settings';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -107,6 +108,7 @@ class Game {
 	#addDOMElem() {
 		this.#addHomeCss2D();
 		this.#addPanerCss2D();
+		this.#addSettingsCss2D();
 	}
 
 	#addHomeCss2D() {
@@ -125,6 +127,22 @@ class Game {
 
 		this.#css2DObject.paner = new CSS2DObject(panerContainer);
 		this.#scene.add(this.#css2DObject.paner);
+	}
+
+	#addSettingsCss2D() {
+		const settingsContainer = document.createElement('div');
+		settingsContainer.className = 'settings';
+		settingsContainer.innerHTML = SETTINGS;
+
+		this.#css2DObject.settings = new CSS2DObject(settingsContainer);
+		this.#scene.add(this.#css2DObject.settings);
+
+		const sbookContainer = document.createElement('div');
+		sbookContainer.className = 'sbook-1';
+		sbookContainer.innerHTML = SBOOK;
+
+		this.#css2DObject.sbook = new CSS2DObject(sbookContainer);
+		this.#scene.add(this.#css2DObject.sbook);
 	}
 
 	#createControls() {
