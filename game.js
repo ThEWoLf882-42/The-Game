@@ -117,6 +117,7 @@ class Game {
 		homeContainer.innerHTML = HOME;
 
 		this.#css2DObject.home = new CSS2DObject(homeContainer);
+		this.#css2DObject.home.name = 'home';
 		this.#scene.add(this.#css2DObject.home);
 	}
 
@@ -126,6 +127,7 @@ class Game {
 		panerContainer.innerHTML = PANER;
 
 		this.#css2DObject.paner = new CSS2DObject(panerContainer);
+		this.#css2DObject.paner.name = 'paner';
 		this.#scene.add(this.#css2DObject.paner);
 	}
 
@@ -135,6 +137,7 @@ class Game {
 		settingsContainer.innerHTML = SETTINGS;
 
 		this.#css2DObject.settings = new CSS2DObject(settingsContainer);
+		this.#css2DObject.settings.name = 'settings';
 		this.#scene.add(this.#css2DObject.settings);
 
 		const sbookContainer = document.createElement('div');
