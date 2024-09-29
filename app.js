@@ -2,6 +2,7 @@ import game from './game';
 
 const homeContainer = document.querySelector('.home');
 const settingsContainer = document.querySelector('.settings');
+const usersProfileContainer = document.querySelector('.profile-pic-icon');
 
 const keyState = new Set();
 const KEY_UP = 'ArrowUp';
@@ -43,5 +44,12 @@ settingsContainer.addEventListener('click', e => {
 	const btn = e.target.closest('.settings');
 	if (btn) {
 		game.toggleSBook();
+	}
+});
+
+usersProfileContainer.addEventListener('click', e => {
+	const btn = e.target.closest('.profile-pic-icon');
+	if (btn) {
+		game.toggleUsersProfile();
 	}
 });

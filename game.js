@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { HOME, GAME, CHAT, LEADERBOARD } from './home';
 import { PANER } from './Paner';
 import { SBOOK, SETTINGS } from './Settings';
+import { USERSPROFILE } from './UsersProfile';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -109,6 +110,7 @@ class Game {
 		this.#addHomeCss2D();
 		this.#addPanerCss2D();
 		this.#addSettingsCss2D();
+		this.#addProfilePic();
 	}
 
 	#addHomeCss2D() {
@@ -154,6 +156,33 @@ class Game {
 			return;
 		}
 		this.#scene.add(this.#css2DObject.sbook);
+	}
+
+	#addProfilePic() {
+		const ppContainer = document.createElement('img');
+		ppContainer.className = 'profile-pic-icon';
+		ppContainer.alt = '';
+		ppContainer.src = '/textures/svg/Profile pic.svg';
+		ppContainer.id = 'profilePicImage';
+
+		this.#css2DObject.profilepic = new CSS2DObject(ppContainer);
+		this.#css2DObject.profilepic.name = 'profilepic';
+		this.#scene.add(this.#css2DObject.profilepic);
+
+		const usersProfileContainer = document.createElement('div');
+		usersProfileContainer.className = 'users-profile';
+		usersProfileContainer.innerHTML = USERSPROFILE;
+
+		this.#css2DObject.usersprofile = new CSS2DObject(usersProfileContainer);
+		this.#css2DObject.usersprofile.name = 'usersprofile';
+	}
+
+	toggleUsersProfile() {
+		if (this.#scene.getObjectByName('usersprofile')) {
+			this.#scene.remove(this.#css2DObject.usersprofile);
+			return;
+		}
+		this.#scene.add(this.#css2DObject.usersprofile);
 	}
 
 	#createControls() {
