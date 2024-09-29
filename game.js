@@ -142,6 +142,14 @@ class Game {
 		sbookContainer.innerHTML = SBOOK;
 
 		this.#css2DObject.sbook = new CSS2DObject(sbookContainer);
+		this.#css2DObject.sbook.name = 'sbook';
+	}
+
+	toggleSBook() {
+		if (this.#scene.getObjectByName('sbook')) {
+			this.#scene.remove(this.#css2DObject.sbook);
+			return;
+		}
 		this.#scene.add(this.#css2DObject.sbook);
 	}
 

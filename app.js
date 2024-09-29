@@ -1,6 +1,7 @@
 import game from './game';
 
 const homeContainer = document.querySelector('.home');
+const settingsContainer = document.querySelector('.settings');
 
 const keyState = new Set();
 const KEY_UP = 'ArrowUp';
@@ -35,5 +36,12 @@ homeContainer.addEventListener('click', e => {
 	if (btn) {
 		const id = btn.dataset.id;
 		game.switchHome(id);
+	}
+});
+
+settingsContainer.addEventListener('click', e => {
+	const btn = e.target.closest('.settings');
+	if (btn) {
+		game.toggleSBook();
 	}
 });
