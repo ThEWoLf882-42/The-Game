@@ -120,6 +120,7 @@ class Game {
 
 		this.#css2DObject.home = new CSS2DObject(homeContainer);
 		this.#css2DObject.home.name = 'home';
+		this.#css2DObject.home.renderOrder = 1;
 		this.#scene.add(this.#css2DObject.home);
 	}
 
@@ -130,6 +131,7 @@ class Game {
 
 		this.#css2DObject.paner = new CSS2DObject(panerContainer);
 		this.#css2DObject.paner.name = 'paner';
+		this.#css2DObject.paner.renderOrder = 2;
 		this.#scene.add(this.#css2DObject.paner);
 	}
 
@@ -140,6 +142,7 @@ class Game {
 
 		this.#css2DObject.settings = new CSS2DObject(settingsContainer);
 		this.#css2DObject.settings.name = 'settings';
+		this.#css2DObject.settings.renderOrder = 3;
 		this.#scene.add(this.#css2DObject.settings);
 
 		const sbookContainer = document.createElement('div');
@@ -148,14 +151,25 @@ class Game {
 
 		this.#css2DObject.sbook = new CSS2DObject(sbookContainer);
 		this.#css2DObject.sbook.name = 'sbook';
+		this.#css2DObject.sbook.renderOrder = 8;
+
+		const overlayContainer = document.createElement('div');
+		overlayContainer.className = 'overlay';
+		overlayContainer.onclick = this.toggleSBook.bind(this);
+
+		this.#css2DObject.sbOverlay = new CSS2DObject(overlayContainer);
+		this.#css2DObject.sbOverlay.name = 'overlay';
+		this.#css2DObject.sbOverlay.renderOrder = 7;
 	}
 
 	toggleSBook() {
 		if (this.#scene.getObjectByName('sbook')) {
 			this.#scene.remove(this.#css2DObject.sbook);
+			this.#scene.remove(this.#css2DObject.sbOverlay);
 			return;
 		}
 		this.#scene.add(this.#css2DObject.sbook);
+		this.#scene.add(this.#css2DObject.sbOverlay);
 	}
 
 	#addProfilePic() {
@@ -167,6 +181,7 @@ class Game {
 
 		this.#css2DObject.profilepic = new CSS2DObject(ppContainer);
 		this.#css2DObject.profilepic.name = 'profilepic';
+		this.#css2DObject.profilepic.renderOrder = 4;
 		this.#scene.add(this.#css2DObject.profilepic);
 
 		const usersProfileContainer = document.createElement('div');
@@ -175,14 +190,25 @@ class Game {
 
 		this.#css2DObject.usersprofile = new CSS2DObject(usersProfileContainer);
 		this.#css2DObject.usersprofile.name = 'usersprofile';
+		this.#css2DObject.usersprofile.renderOrder = 6;
+
+		const overlayContainer = document.createElement('div');
+		overlayContainer.className = 'overlay';
+		overlayContainer.onclick = this.toggleUsersProfile.bind(this);
+
+		this.#css2DObject.upOverlay = new CSS2DObject(overlayContainer);
+		this.#css2DObject.upOverlay.name = 'overlay';
+		this.#css2DObject.upOverlay.renderOrder = 5;
 	}
 
 	toggleUsersProfile() {
 		if (this.#scene.getObjectByName('usersprofile')) {
 			this.#scene.remove(this.#css2DObject.usersprofile);
+			this.#scene.remove(this.#css2DObject.upOverlay);
 			return;
 		}
 		this.#scene.add(this.#css2DObject.usersprofile);
+		this.#scene.add(this.#css2DObject.upOverlay);
 	}
 
 	#createControls() {
