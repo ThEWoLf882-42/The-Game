@@ -4,6 +4,7 @@ import { HOME, GAME, CHAT, LEADERBOARD } from './home';
 import { PANER } from './Paner';
 import { SBOOK, SETTINGS } from './Settings';
 import { USERSPROFILE } from './UsersProfile';
+import { MAINCHAT } from './Chat';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -111,6 +112,7 @@ class Game {
 		this.#addPanerCss2D();
 		this.#addSettingsCss2D();
 		this.#addProfilePic();
+		this.#addChatCss2D();
 	}
 
 	#addHomeCss2D() {
@@ -209,6 +211,15 @@ class Game {
 		}
 		this.#scene.add(this.#css2DObject.usersprofile);
 		this.#scene.add(this.#css2DObject.upOverlay);
+	}
+
+	#addChatCss2D() {
+		const chatContainer = document.createElement('div');
+		chatContainer.className = 'chat-interface';
+		chatContainer.innerHTML = MAINCHAT;
+
+		this.#css2DObject.chat = new CSS2DObject(chatContainer);
+		this.#css2DObject.chat.name = 'chat';
 	}
 
 	#createControls() {
@@ -567,6 +578,7 @@ class Game {
 
 	switchHome(home) {
 		this.#css2DObject.home.element.innerHTML = this.#home[home];
+		this.#scene.add(this.#css2DObject[home]);
 	}
 }
 
