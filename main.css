@@ -567,9 +567,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
 	text-align: right;
-	font-size: 16.51px;
+	font-size: 17px;
 	color: #d0c3a9;
 }
 
@@ -912,7 +912,7 @@ body {
 
 .users-profile {
 	width: 1440px;
-	top: calc(2%);
+	top: calc(3%);
 	position: absolute;
 	height: 810px;
 	text-align: center;

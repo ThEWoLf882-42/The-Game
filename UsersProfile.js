@@ -1,3 +1,41 @@
+// matches-score
+export const MATCHESSCORE = `<div class="matches-score">
+	<div class="mb">
+		<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
+		<div class="rectangle-parent">
+			<img
+				class="rectangle-icon1"
+				alt=""
+				src="/textures/svg/RectangleMB.svg"
+			/>
+			<img
+				class="group-item"
+				alt=""
+				src="/textures/svg/Rectangle 12.svg"
+			/>
+		</div>
+		<div class="user-2">User 2</div>
+		<div class="div">0</div>
+	</div>
+	<div class="mb1">
+		<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
+		<div class="rectangle-group">
+			<img
+				class="rectangle-icon1"
+				alt=""
+				src="/textures/svg/RectangleMP.svg"
+			/>
+			<img
+				class="group-item"
+				alt=""
+				src="/textures/svg/Rectangle 12.svg"
+			/>
+		</div>
+		<div class="user-1">User 1</div>
+		<div class="div1">0</div>
+	</div>
+</div>`;
+
 export const USERSPROFILE = `<div class="right">
 	<div class="cadre-parent">
 		<div class="cadre">
@@ -6,366 +44,6 @@ export const USERSPROFILE = `<div class="right">
 			<div class="personal-information">Matches History</div>
 		</div>
 		<div class="matches-score-parent">
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
-			<div class="matches-score">
-				<div class="mb">
-					<img class="mp-1-icon" alt="" src="/textures/svg/MP 1.svg" />
-					<div class="rectangle-parent">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMB.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-2">User 2</div>
-					<div class="div">0</div>
-				</div>
-				<div class="mb1">
-					<img class="mb-1-icon" alt="" src="/textures/svg/MB 1.svg" />
-					<div class="rectangle-group">
-						<img
-							class="rectangle-icon1"
-							alt=""
-							src="/textures/svg/RectangleMP.svg"
-						/>
-						<img
-							class="group-item"
-							alt=""
-							src="/textures/svg/Rectangle 12.svg"
-						/>
-					</div>
-					<div class="user-1">User 1</div>
-					<div class="div1">0</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
