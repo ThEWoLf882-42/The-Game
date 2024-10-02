@@ -4,7 +4,7 @@ import { HOME, GAME, CHAT, LEADERBOARD } from './home';
 import { PANER } from './Paner';
 import { SBOOK, SETTINGS } from './Settings';
 import { USERSPROFILE } from './UsersProfile';
-import { MAINCHAT } from './Chat';
+import { MAINCHAT, RECIVED, SENT } from './Chat';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -220,6 +220,31 @@ class Game {
 
 		this.#css2DObject.chat = new CSS2DObject(chatContainer);
 		this.#css2DObject.chat.name = 'chat';
+		this.#css2DObject.chat.element
+			.querySelector('.vector-icon')
+			.addEventListener('click', e => {
+				this.#addRecivedMessage('test');
+			});
+	}
+
+	#addSentMessage(message) {
+		const sentMessage = document.createElement('template');
+		sentMessage.innerHTML = SENT.trim();
+		sentMessage.content.firstChild.querySelector('.you').textContent =
+			message;
+		this.#css2DObject.chat.element
+			.querySelector('.recived-parent')
+			.appendChild(sentMessage.content.firstChild);
+	}
+
+	#addRecivedMessage(message) {
+		const sentMessage = document.createElement('template');
+		sentMessage.innerHTML = RECIVED.trim();
+		sentMessage.content.firstChild.querySelector('.you').textContent =
+			message;
+		this.#css2DObject.chat.element
+			.querySelector('.recived-parent')
+			.appendChild(sentMessage.content.firstChild);
 	}
 
 	#createControls() {
