@@ -577,6 +577,7 @@ class Game {
 	}
 
 	switchHome(home) {
+		this.#scene.remove(this.#css2DObject.chat);
 		this.#css2DObject.home.element.innerHTML = this.#home[home];
 		this.#scene.add(this.#css2DObject[home]);
 	}
