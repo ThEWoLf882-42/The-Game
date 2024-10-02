@@ -1,6 +1,6 @@
 export const MAINCHAT = `<div class="chat">
 	<div class="friends-list">
-		<div class="frame-parent">
+		<div class="frame-parent-chat">
 			<div class="friends-list-parent">
 				<div class="friends-list1">Friend’s List</div>
 				<img
@@ -175,7 +175,7 @@ export const MAINCHAT = `<div class="chat">
 			</div>
 		</div>
 	</div>
-	<div class="infos">
+	<div class="infos-chat">
 		<div class="frame-group">
 			<div class="frame-container">
 				<img

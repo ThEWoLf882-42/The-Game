@@ -872,6 +872,14 @@ body {
 	width: 199.5px;
 }
 
+.infos {
+	width: 0.8px;
+	display: none;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
 .frame-parent {
 	position: absolute;
 	top: 142.5px;
@@ -1020,7 +1028,7 @@ body {
 	color: #4f483f;
 }
 
-.frame-parent {
+.frame-parent-chat {
 	position: absolute;
 	top: calc(50% - 270.5px);
 	left: calc(50% - 275px);
@@ -1130,7 +1138,7 @@ body {
 	gap: 60px;
 }
 
-.infos {
+.infos-chat {
 	position: absolute;
 	top: calc(50% - 327px);
 	left: 0px;
