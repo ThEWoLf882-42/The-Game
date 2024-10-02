@@ -1026,6 +1026,9 @@ body {
 	gap: 6px;
 	font-size: 20px;
 	color: #4f483f;
+	overflow-y: auto;
+	scrollbar-width: none;
+	max-height: 480px;
 }
 
 .frame-parent-chat {

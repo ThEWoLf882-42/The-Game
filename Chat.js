@@ -1,3 +1,30 @@
+// recived-parent
+export const RECIVED = `<div class="recived">
+	<div class="you"></div>
+</div>`;
+
+export const SENT = `<div class="sent">
+	<div class="you"></div>
+</div>`;
+
+// element-parent
+export const ELEMENT = `<div class="element">
+	<img class="element-child" alt="" src="/textures/svg/Rectangle 1.svg" />
+
+	<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
+	<img
+		class="indicator-icon1"
+		alt=""
+		src="/textures/svg/Indicator message.svg"
+	/>
+
+	<img
+		class="indicator-icon"
+		alt=""
+		src="/textures/svg/Indicator offline.svg"
+	/>
+</div>`;
+
 export const MAINCHAT = `<div class="chat">
 	<div class="friends-list">
 		<div class="frame-parent-chat">
@@ -10,168 +37,6 @@ export const MAINCHAT = `<div class="chat">
 				/>
 			</div>
 			<div class="element-parent">
-				<div class="element">
-					<img
-						class="element-child"
-						alt=""
-						src="/textures/svg/Rectangle 1.svg"
-					/>
-
-					<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
-					<div class="indicator">
-						<div class="rectangle"></div>
-					</div>
-					<img
-						class="indicator-icon"
-						alt=""
-						src="/textures/svg/Indicator offline.svg"
-					/>
-				</div>
-				<div class="element">
-					<img
-						class="element-child"
-						alt=""
-						src="/textures/svg/Rectangle 1.svg"
-					/>
-
-					<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
-					<img
-						class="indicator-icon1"
-						alt=""
-						src="/textures/svg/Indicator message.svg"
-					/>
-
-					<img
-						class="indicator-icon"
-						alt=""
-						src="/textures/svg/Indicator offline.svg"
-					/>
-				</div>
-				<div class="element">
-					<img
-						class="element-child"
-						alt=""
-						src="/textures/svg/Rectangle 1.svg"
-					/>
-
-					<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
-					<img
-						class="indicator-icon1"
-						alt=""
-						src="/textures/svg/Indicator message.svg"
-					/>
-
-					<img
-						class="indicator-icon"
-						alt=""
-						src="/textures/svg/Indicator offline.svg"
-					/>
-				</div>
-				<div class="element">
-					<img
-						class="element-child"
-						alt=""
-						src="/textures/svg/Rectangle 1.svg"
-					/>
-
-					<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
-					<div class="indicator">
-						<div class="rectangle"></div>
-					</div>
-					<img
-						class="indicator-icon"
-						alt=""
-						src="/textures/svg/Indicator offline.svg"
-					/>
-				</div>
-				<div class="element">
-					<img
-						class="element-child"
-						alt=""
-						src="/textures/svg/Rectangle 1.svg"
-					/>
-
-					<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
-					<img
-						class="indicator-icon1"
-						alt=""
-						src="/textures/svg/Indicator message.svg"
-					/>
-
-					<img
-						class="indicator-icon"
-						alt=""
-						src="/textures/svg/Indicator offline.svg"
-					/>
-				</div>
-				<div class="element">
-					<img
-						class="element-child"
-						alt=""
-						src="/textures/svg/Rectangle 1.svg"
-					/>
-
-					<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
-					<div class="indicator">
-						<div class="rectangle"></div>
-					</div>
-					<img
-						class="indicator-icon"
-						alt=""
-						src="/textures/svg/Indicator offline.svg"
-					/>
-				</div>
-				<div class="element">
-					<img
-						class="element-child"
-						alt=""
-						src="/textures/svg/Rectangle 1.svg"
-					/>
-
-					<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
-					<div class="indicator">
-						<div class="rectangle"></div>
-					</div>
-					<img
-						class="indicator-icon"
-						alt=""
-						src="/textures/svg/Indicator offline.svg"
-					/>
-				</div>
-				<div class="element">
-					<img
-						class="element-child"
-						alt=""
-						src="/textures/svg/Rectangle 1.svg"
-					/>
-
-					<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
-					<div class="indicator">
-						<div class="rectangle"></div>
-					</div>
-					<img
-						class="indicator-icon"
-						alt=""
-						src="/textures/svg/Indicator offline.svg"
-					/>
-				</div>
-				<div class="element">
-					<img
-						class="element-child"
-						alt=""
-						src="/textures/svg/Rectangle 1.svg"
-					/>
-
-					<div class="sword-prowess-lv">Sword Prowess Lv 2</div>
-					<div class="indicator">
-						<div class="rectangle"></div>
-					</div>
-					<img
-						class="indicator-icon"
-						alt=""
-						src="/textures/svg/Indicator offline.svg"
-					/>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -222,12 +87,6 @@ export const MAINCHAT = `<div class="chat">
 	</div>
 	<div class="rightchat">
 		<div class="recived-parent">
-			<div class="recived">
-				<div class="you">you</div>
-			</div>
-			<div class="sent">
-				<div class="you">how are you today</div>
-			</div>
 		</div>
 		<div class="message-frame">
 			<img class="b-icon" alt="" src="/textures/svg/B.svg" />
