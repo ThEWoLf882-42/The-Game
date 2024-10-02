@@ -377,6 +377,12 @@ body {
 	height: 104px;
 	width: 104px;
 	object-fit: cover;
+	transition: left 0.3s ease;
+}
+
+.profile-pic-tran {
+	left: calc(-50% + 132px + 310px);
+	transition: left 0.3s ease;
 }
 
 .rectangle-icon {

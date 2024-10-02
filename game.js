@@ -579,6 +579,14 @@ class Game {
 	switchHome(home) {
 		this.#scene.remove(this.#css2DObject.chat);
 		this.#css2DObject.home.element.innerHTML = this.#home[home];
+		if (home !== 'home' && home !== 'game')
+			this.#css2DObject.profilepic.element.classList.add(
+				'profile-pic-tran'
+			);
+		else
+			this.#css2DObject.profilepic.element.classList.remove(
+				'profile-pic-tran'
+			);
 		this.#scene.add(this.#css2DObject[home]);
 	}
 }
