@@ -1533,7 +1533,7 @@ body {
 .leader-back-1 {
 	position: absolute;
 	top: calc(50% - 350px);
-	right: 72px;
+	left: calc(50% - 170px);
 	width: 1054px;
 	height: 748px;
 }
@@ -1621,8 +1621,8 @@ body {
 
 .element-parent-leaderboard {
 	position: absolute;
-	top: 302px;
-	left: 80px;
+	top: calc(50% - 238px);
+	left: calc(50% - 880px);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
