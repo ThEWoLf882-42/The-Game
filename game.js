@@ -7,6 +7,7 @@ import { USERSPROFILE } from './UsersProfile';
 import { MAINCHAT, RECIVED, SENT } from './Chat';
 import { LEGEND, LEGEND_CHAT, LEGEND_LEADERBOARD } from './Legend';
 import { LEADERBOARDMAIN } from './Leaderboard';
+import { LOREM } from './Lorem';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -42,7 +43,7 @@ class Game {
 	#scoreL = 0;
 	#scoreR = 0;
 
-	#velocity = 50;
+	#velocity = 30;
 	#ballDirection = new THREE.Vector3();
 	#minDir = 0.69;
 	#playerDirection = 0;
@@ -246,7 +247,7 @@ class Game {
 		this.#css2DObject.chat.element
 			.querySelector('.vector-icon')
 			.addEventListener('click', e => {
-				this.#addRecivedMessage('test');
+				this.#addRecivedMessage(LOREM);
 			});
 	}
 

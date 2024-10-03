@@ -36,8 +36,7 @@ export const MAINCHAT = `<div class="chat">
 					src="/textures/svg/Line 4.svg"
 				/>
 			</div>
-			<div class="element-parent">
-			</div>
+			<div class="element-parent"></div>
 		</div>
 	</div>
 	<div class="infos-chat">
@@ -48,7 +47,6 @@ export const MAINCHAT = `<div class="chat">
 					alt=""
 					src="/textures/svg/Frame 14.svg"
 				/>
-
 				<img
 					class="indicator-icon12"
 					alt=""
@@ -63,19 +61,16 @@ export const MAINCHAT = `<div class="chat">
 						alt=""
 						src="/textures/svg/profile_icon.svg"
 					/>
-
 					<img
 						class="add-user-icon"
 						alt=""
 						src="/textures/svg/add_user.svg"
 					/>
-
 					<img
 						class="ping-pong-1-icon"
 						alt=""
 						src="/textures/svg/ping-pong 1.svg"
 					/>
-
 					<img
 						class="add-user-icon"
 						alt=""
@@ -90,14 +85,12 @@ export const MAINCHAT = `<div class="chat">
 		</div>
 		<div class="message-frame">
 			<img class="b-icon" alt="" src="/textures/svg/B.svg" />
-
 			<div class="message">Message</div>
 			<img class="vector-icon" alt="" src="/textures/svg/Vector.svg" />
 		</div>
 	</div>
 	<div class="title">
 		<img class="titlebg-icon" alt="" src="/textures/svg/TitleBG.svg" />
-
 		<div class="mel-moun">mel-moun</div>
 	</div>
 	<div class="chat-interface1">

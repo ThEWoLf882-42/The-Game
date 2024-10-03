@@ -1165,6 +1165,7 @@ body {
 	flex: 1;
 	position: relative;
 	line-height: 150%;
+	white-space: pre-wrap;
 }
 
 .recived {
@@ -1173,7 +1174,7 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	padding: 20px 30px;
+	padding: 10px 30px;
 	box-sizing: border-box;
 	background-image: url('textures/svg/Message.svg');
 	background-size: cover;
@@ -1192,7 +1193,7 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	padding: 20px 30px;
+	padding: 10px 30px;
 	box-sizing: border-box;
 	background-image: url('textures/svg/Message.svg');
 	background-size: cover;
@@ -1318,7 +1319,6 @@ body {
 	width: 640px;
 	height: 48px;
 	overflow: hidden;
-	background-image: url('Title.png');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: top;

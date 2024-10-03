@@ -16,10 +16,10 @@ export const SBOOK = `<img class="rectangle-icon17" alt="" src="/textures/svg/SB
 		</div>
 		<div class="factor-authentication">Factor Authentication</div>
 	</div>
-	<div class="log-out" id="popuplogOUTContainer">
+	<div class="setting-frame">
 		<div class="setting-12">Logout</div>
 	</div>
 </div>
 <div class="settings-wrapper">
-	<div class="settings2">Settings</div>
+	<div class="settings">Settings</div>
 </div>`;
