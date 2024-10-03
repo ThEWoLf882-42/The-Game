@@ -631,6 +631,8 @@ class Game {
 		};
 
 		this.#scene.remove(this.#css2DObject.chat);
+		this.#scene.remove(this.#css2DObject.leaderboard);
+
 		this.#css2DObject.home.element.innerHTML = this.#home[home];
 		if (home !== 'home' && home !== 'game') {
 			this.#css2DObject.profilepic.element.classList.add(
