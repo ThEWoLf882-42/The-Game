@@ -1173,7 +1173,7 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	padding: 10px 30px;
+	padding: 20px 30px;
 	box-sizing: border-box;
 	background-image: url('textures/svg/Message.svg');
 	background-size: cover;
@@ -1192,7 +1192,7 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	padding: 10px 30px;
+	padding: 20px 30px;
 	box-sizing: border-box;
 	background-image: url('textures/svg/Message.svg');
 	background-size: cover;
