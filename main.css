@@ -1369,3 +1369,36 @@ body {
 	color: #fff;
 	font-family: Gabriela;
 }
+
+.legend-icon {
+	position: absolute;
+	width: 100%;
+	left: 17%;
+	overflow: hidden;
+	max-height: 100%;
+	object-fit: fill;
+}
+
+.dont-bother-me {
+	position: absolute;
+	top: calc(50% - 17px);
+	left: calc(50% - 61.15px);
+	line-height: 150%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 300px;
+}
+
+.legend {
+	top: calc(-50% + 100px);
+	left: calc(-50% + 82.4px);
+	position: relative;
+	width: 575.25px;
+	height: 78px;
+	overflow: hidden;
+	text-align: center;
+	font-size: 22.5px;
+	color: #e2dac4;
+	font-family: Gabriela;
+}

@@ -5,6 +5,7 @@ import { PANER } from './Paner';
 import { SBOOK, SETTINGS } from './Settings';
 import { USERSPROFILE } from './UsersProfile';
 import { MAINCHAT, RECIVED, SENT } from './Chat';
+import { LEGEND, LEGEND_CHAT, LEGEND_LEADERBOARD } from './Legend';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -40,7 +41,7 @@ class Game {
 	#scoreL = 0;
 	#scoreR = 0;
 
-	#velocity = 30;
+	#velocity = 50;
 	#ballDirection = new THREE.Vector3();
 	#minDir = 0.69;
 	#playerDirection = 0;
@@ -113,6 +114,7 @@ class Game {
 		this.#addSettingsCss2D();
 		this.#addProfilePic();
 		this.#addChatCss2D();
+		this.#addLegendCss2d();
 	}
 
 	#addHomeCss2D() {
@@ -124,6 +126,16 @@ class Game {
 		this.#css2DObject.home.name = 'home';
 		this.#css2DObject.home.renderOrder = 1;
 		this.#scene.add(this.#css2DObject.home);
+	}
+
+	#addLegendCss2d() {
+		const legendContainer = document.createElement('div');
+		legendContainer.className = 'legend';
+		legendContainer.innerHTML = LEGEND;
+
+		this.#css2DObject.legend = new CSS2DObject(legendContainer);
+		this.#css2DObject.legend.name = 'legend';
+		this.#css2DObject.legend.renderOrder = 1;
 	}
 
 	#addPanerCss2D() {
@@ -602,16 +614,27 @@ class Game {
 	}
 
 	switchHome(home) {
+		const legendText = {
+			chat: LEGEND_CHAT,
+			leaderboard: LEGEND_LEADERBOARD,
+		};
+
 		this.#scene.remove(this.#css2DObject.chat);
 		this.#css2DObject.home.element.innerHTML = this.#home[home];
-		if (home !== 'home' && home !== 'game')
+		if (home !== 'home' && home !== 'game') {
 			this.#css2DObject.profilepic.element.classList.add(
 				'profile-pic-tran'
 			);
-		else
+			this.#css2DObject.legend.element.querySelector(
+				'.dont-bother-me'
+			).textContent = legendText[home];
+			this.#scene.add(this.#css2DObject.legend);
+		} else {
 			this.#css2DObject.profilepic.element.classList.remove(
 				'profile-pic-tran'
 			);
+			this.#scene.remove(this.#css2DObject.legend);
+		}
 		this.#scene.add(this.#css2DObject[home]);
 	}
 }
