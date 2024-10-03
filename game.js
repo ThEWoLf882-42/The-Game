@@ -6,6 +6,7 @@ import { SBOOK, SETTINGS } from './Settings';
 import { USERSPROFILE } from './UsersProfile';
 import { MAINCHAT, RECIVED, SENT } from './Chat';
 import { LEGEND, LEGEND_CHAT, LEGEND_LEADERBOARD } from './Legend';
+import { LEADERBOARDMAIN } from './Leaderboard';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -115,6 +116,7 @@ class Game {
 		this.#addProfilePic();
 		this.#addChatCss2D();
 		this.#addLegendCss2d();
+		this.#addLeaderboardCss2D();
 	}
 
 	#addHomeCss2D() {
@@ -223,6 +225,15 @@ class Game {
 		}
 		this.#scene.add(this.#css2DObject.usersprofile);
 		this.#scene.add(this.#css2DObject.upOverlay);
+	}
+
+	#addLeaderboardCss2D() {
+		const leaderboardContainer = document.createElement('div');
+		leaderboardContainer.className = 'leaderboard';
+		leaderboardContainer.innerHTML = LEADERBOARDMAIN;
+
+		this.#css2DObject.leaderboard = new CSS2DObject(leaderboardContainer);
+		this.#css2DObject.leaderboard.name = 'leaderboard';
 	}
 
 	#addChatCss2D() {

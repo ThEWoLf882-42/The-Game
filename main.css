@@ -1402,3 +1402,244 @@ body {
 	color: #e2dac4;
 	font-family: Gabriela;
 }
+
+.leaderboard-icon {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	max-width: 100%;
+	overflow: hidden;
+	max-height: 100%;
+	object-fit: cover;
+}
+
+.leaderboard-icon2 {
+	position: absolute;
+	top: calc(50% - 47px);
+	left: calc(50% - 58px);
+	width: 116px;
+	height: 93px;
+	object-fit: cover;
+}
+
+.flower-frame-1 {
+	position: absolute;
+	height: 28.21%;
+	top: -14.1%;
+	bottom: 85.9%;
+	left: calc(50% - 111px);
+	width: 222px;
+	overflow: hidden;
+}
+
+.a-icon {
+	width: 111px;
+	position: relative;
+	height: 111px;
+	overflow: hidden;
+	flex-shrink: 0;
+	object-fit: cover;
+}
+
+.agimi {
+	align-self: stretch;
+	width: 67px;
+	position: relative;
+	line-height: 150%;
+	display: inline-block;
+	flex-shrink: 0;
+}
+
+.div-num {
+	align-self: stretch;
+	flex: 1;
+	position: relative;
+	font-size: 50px;
+	line-height: 150%;
+	text-align: center;
+}
+
+.infos-leaderboard {
+	width: 411px;
+	height: 111px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 20px 0px 0px 20px;
+	box-sizing: border-box;
+}
+
+.a-parent {
+	position: absolute;
+	top: 130px;
+	left: 395px;
+	width: 532px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 17px;
+}
+
+.mel-moun-leaderboard {
+	align-self: stretch;
+	width: 119px;
+	position: relative;
+	line-height: 150%;
+	display: inline-block;
+	flex-shrink: 0;
+}
+
+.avatarf-1-1-parent {
+	position: absolute;
+	top: 319px;
+	left: 127px;
+	width: 532px;
+	height: 111px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 17px;
+}
+
+.hchairi {
+	align-self: stretch;
+	width: 83px;
+	position: relative;
+	line-height: 150%;
+	display: inline-block;
+	flex-shrink: 0;
+}
+
+.avatarf-1-1-group {
+	position: absolute;
+	top: 507px;
+	left: 395px;
+	width: 532px;
+	height: 111px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 17px;
+}
+
+.leader-back-1 {
+	position: absolute;
+	top: calc(50% - 350px);
+	right: 72px;
+	width: 1054px;
+	height: 748px;
+}
+
+.element-leaderboard {
+	width: 550px;
+	position: relative;
+	background: linear-gradient(90deg, #cfb53b, #fff 40%, #fff 60%, #cfb53b);
+	border: 2px solid #000;
+	box-sizing: border-box;
+	height: 48px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.element1 {
+	width: 550px;
+	position: relative;
+	background: linear-gradient(90deg, #a9a9a9, #fff 50%, #a9a9a9);
+	border: 2px solid #000;
+	box-sizing: border-box;
+	height: 48px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.element2 {
+	width: 550px;
+	position: relative;
+	background: linear-gradient(90deg, #cd7f32, #fff 40%, #fff 60%, #cd7f32);
+	border: 1px solid #000;
+	box-sizing: border-box;
+	height: 48px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.gold {
+	background: linear-gradient(90deg, #cfb53b, #fff 40%, #fff 60%, #cfb53b);
+}
+
+.bronze {
+	background: linear-gradient(90deg, #cd7f32, #fff 40%, #fff 60%, #cd7f32);
+}
+
+.silver {
+	background: linear-gradient(90deg, #a9a9a9, #fff 50%, #a9a9a9);
+}
+
+.element3 {
+	width: 550px;
+	position: absolute;
+	margin: 0 !important;
+	top: 0px;
+	left: 0px;
+	background-color: #e7e1d1;
+	border: 2px solid #88775b;
+	box-sizing: border-box;
+	height: 48px;
+	overflow: hidden;
+	flex-shrink: 0;
+	z-index: 0;
+}
+
+.div3 {
+	position: relative;
+	line-height: 150%;
+	color: #000;
+	text-align: right;
+	z-index: 1;
+}
+
+.element-group {
+	width: 550px;
+	height: 48px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 0px 30px;
+	box-sizing: border-box;
+	position: relative;
+	gap: 10px;
+}
+
+.element-parent-leaderboard {
+	position: absolute;
+	top: 302px;
+	left: 80px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 20px;
+	font-size: 20px;
+	color: #4f483f;
+}
+
+.leaderboard {
+	top: calc(0%);
+	width: 100%;
+	position: relative;
+	height: 1080px;
+	overflow: hidden;
+	text-align: left;
+	font-size: 24px;
+	color: #d4c9c9;
+	font-family: Gabriela;
+}
