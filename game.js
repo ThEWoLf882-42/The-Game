@@ -512,7 +512,7 @@ class Game {
 		direction.z =
 			Math.sign(direction.z) *
 			Math.max(Math.abs(direction.z), this.#minDir);
-		this.#ballDirection = direction.multiplyScalar(this.#velocity);
+		this.#ballDirection = direction.multiplyScalar(this.#velocity * 2);
 	}
 
 	#handleBallWallCollision() {
@@ -593,7 +593,7 @@ class Game {
 		if (Math.abs(y) < this.#minDir) y = Math.sign(y) * this.#minDir;
 
 		this.#ballDirection = new THREE.Vector3(x, y).multiplyScalar(
-			this.#velocity
+			this.#velocity * 2
 		);
 		this.#hasChanges = true;
 	}
