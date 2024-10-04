@@ -1644,46 +1644,10 @@ body {
 	font-family: Gabriela;
 }
 
-.b-icon-sign {
-	position: absolute;
-	top: 0px;
-	left: calc(50% - 97.5px);
-	width: 195px;
-	height: 75px;
-	overflow: hidden;
-	object-fit: cover;
-}
-
-.login1 {
-	position: absolute;
-	top: 19px;
-	left: calc(50% - 40.5px);
-}
-
-.login {
-	position: absolute;
-	top: 323px;
-	left: calc(50% - 97px);
-	width: 195px;
-	height: 75px;
-	cursor: pointer;
-}
-
-.new-user {
-	white-space: pre-wrap;
-}
-
 .sign-up {
-	color: #060606;
-}
-
-.new-user-sign-container {
-	position: absolute;
-	top: 418px;
-	left: calc(50% - 131px);
-	font-size: 25px;
-	cursor: pointer;
-	color: #525252;
+	align-self: stretch;
+	position: relative;
+	line-height: 150%;
 }
 
 .email {
@@ -1739,6 +1703,17 @@ body {
 	min-height: 34px;
 }
 
+.email1 {
+	width: 118px;
+	position: absolute;
+	margin: 0 !important;
+	top: -2px;
+	left: 60px;
+	line-height: 150%;
+	display: inline-block;
+	z-index: 0;
+}
+
 .password {
 	width: 111px;
 	position: absolute;
@@ -1750,7 +1725,7 @@ body {
 	z-index: 0;
 }
 
-.iv-icon1 {
+.iv-icon2 {
 	position: absolute;
 	width: 7%;
 	top: calc(50% - 16px);
@@ -1761,36 +1736,76 @@ body {
 	height: 32px;
 }
 
-.login2 {
+.password1 {
+	width: 209px;
 	position: absolute;
-	top: 175px;
-	left: calc(50% - 228px);
+	margin: 0 !important;
+	top: -2px;
+	left: 60px;
+	line-height: 150%;
+	display: inline-block;
+	z-index: 0;
+}
+
+.bsign-icon {
+	position: absolute;
+	top: 0px;
+	left: calc(50% - 97.5px);
+	width: 195px;
+	height: 75px;
+	overflow: hidden;
+	object-fit: cover;
+}
+
+.register1 {
+	position: absolute;
+	top: 19px;
+	left: calc(50% - 58.5px);
+}
+
+.login1 {
+	width: 195px;
+	position: relative;
+	height: 75px;
+}
+
+.registered {
+	white-space: pre-wrap;
+}
+
+.sign-in-text {
+	color: #060606;
+}
+
+.registered-sign-in-container {
+	align-self: stretch;
+	position: relative;
+	font-size: 25px;
+	color: #525252;
+}
+
+.login-group {
+	width: 269px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
+	gap: 20px;
+	text-align: center;
+	font-size: 30px;
+	color: rgba(0, 0, 0, 0.82);
+}
+
+.login-parent {
+	align-self: stretch;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
 	gap: 40px;
 	text-align: left;
 	font-size: 24px;
 	color: #3d3c3c;
-}
-
-.icon {
-	width: 45px;
-	position: relative;
-	height: 45px;
-	object-fit: cover;
-}
-
-.parent {
-	position: absolute;
-	top: 554px;
-	left: calc(50% - 75px);
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	gap: 60px;
 }
 
 .or1 {
@@ -1812,36 +1827,123 @@ body {
 }
 
 .or {
-	position: absolute;
-	top: 490px;
-	left: calc(50% - 230px);
 	width: 460px;
+	position: relative;
 	height: 24px;
 	font-size: 20px;
 	color: #000;
 }
 
-.sign-in1 {
-	position: absolute;
-	top: 60px;
-	left: calc(50% - 95px);
+.icon {
+	width: 45px;
+	position: relative;
+	height: 45px;
+	object-fit: cover;
+}
+
+.parent {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 60px;
+}
+
+.register {
+	top: calc(2.5%);
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 60px 97px;
+	box-sizing: border-box;
+	gap: 40px;
+	background-image: url('/textures/svg/RegisterBG.svg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top;
+	text-align: center;
 	font-size: 50px;
-	line-height: 150%;
 	color: #6b3783;
+	font-family: Gabriela;
 }
 
 .sign-in {
-	top: calc(0%);
-	width: 654px;
+	align-self: stretch;
 	position: relative;
-	height: 659px;
+	line-height: 150%;
+}
+
+.username {
+	width: 118px;
+	position: absolute;
+	margin: 0 !important;
+	top: -2px;
+	left: 60px;
+	line-height: 150%;
+	display: inline-block;
+	z-index: 0;
+}
+
+.iv-icon1 {
+	position: absolute;
+	width: 7%;
+	top: calc(50% - 16px);
+	right: 93%;
+	left: 0%;
+	max-width: 100%;
 	overflow: hidden;
+	height: 32px;
+}
+
+.login-sign {
+	align-self: stretch;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+.login3 {
+	position: absolute;
+	top: 19px;
+	left: calc(50% - 40.5px);
+}
+
+.login2 {
+	width: 195px;
+	position: relative;
+	height: 75px;
+}
+
+.new-user-sign {
+	align-self: stretch;
+	position: relative;
+	font-size: 25px;
+	color: #525252;
+	white-space: pre-wrap;
+}
+
+.login {
+	top: calc(2%);
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 60px 97px;
+	box-sizing: border-box;
+	gap: 40px;
 	background-image: url('/textures/svg/SignBG.svg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: top;
 	text-align: center;
-	font-size: 30px;
-	color: rgba(0, 0, 0, 0.82);
+	font-size: 50px;
+	color: #6b3783;
 	font-family: Gabriela;
 }

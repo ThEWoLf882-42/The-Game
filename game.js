@@ -7,7 +7,7 @@ import { USERSPROFILE } from './UsersProfile';
 import { MAINCHAT, RECIVED, SENT } from './Chat';
 import { LEGEND, LEGEND_CHAT, LEGEND_LEADERBOARD } from './Legend';
 import { LEADERBOARDMAIN } from './Leaderboard';
-import { SIGNIN } from './Sign';
+import { SIGNIN, SIGNUP } from './Sign';
 
 import { LOREM } from './Lorem';
 
@@ -115,6 +115,7 @@ class Game {
 
 	#addDOMElem() {
 		this.#addSignInCss2D();
+		this.#addSignUpCss2D();
 		this.#addHomeCss2D();
 		this.#addPanerCss2D();
 		this.#addSettingsCss2D();
@@ -126,12 +127,22 @@ class Game {
 
 	#addSignInCss2D() {
 		const signContainer = document.createElement('div');
-		signContainer.className = 'sign-in';
+		signContainer.className = 'login';
 		signContainer.innerHTML = SIGNIN;
 
 		this.#css2DObject.sign = new CSS2DObject(signContainer);
 		this.#css2DObject.sign.name = 'sign in';
-		this.#scene.add(this.#css2DObject.sign);
+		// this.#scene.add(this.#css2DObject.sign);
+	}
+
+	#addSignUpCss2D() {
+		const registerContainer = document.createElement('div');
+		registerContainer.className = 'register';
+		registerContainer.innerHTML = SIGNUP;
+
+		this.#css2DObject.register = new CSS2DObject(registerContainer);
+		this.#css2DObject.register.name = 'sign up';
+		this.#scene.add(this.#css2DObject.register);
 	}
 
 	#addHomeCss2D() {
