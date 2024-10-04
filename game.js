@@ -44,6 +44,7 @@ class Game {
 	#scoreR = 0;
 
 	#velocity = 30;
+	#factor = 1.5;
 	#ballDirection = new THREE.Vector3();
 	#minDir = 0.69;
 	#playerDirection = 0;
@@ -512,7 +513,9 @@ class Game {
 		direction.z =
 			Math.sign(direction.z) *
 			Math.max(Math.abs(direction.z), this.#minDir);
-		this.#ballDirection = direction.multiplyScalar(this.#velocity * 2);
+		this.#ballDirection = direction.multiplyScalar(
+			this.#velocity * this.#factor
+		);
 	}
 
 	#handleBallWallCollision() {
@@ -593,7 +596,7 @@ class Game {
 		if (Math.abs(y) < this.#minDir) y = Math.sign(y) * this.#minDir;
 
 		this.#ballDirection = new THREE.Vector3(x, y).multiplyScalar(
-			this.#velocity * 2
+			this.#velocity * this.#factor
 		);
 		this.#hasChanges = true;
 	}
