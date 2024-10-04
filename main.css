@@ -1643,3 +1643,205 @@ body {
 	color: #d4c9c9;
 	font-family: Gabriela;
 }
+
+.b-icon-sign {
+	position: absolute;
+	top: 0px;
+	left: calc(50% - 97.5px);
+	width: 195px;
+	height: 75px;
+	overflow: hidden;
+	object-fit: cover;
+}
+
+.login1 {
+	position: absolute;
+	top: 19px;
+	left: calc(50% - 40.5px);
+}
+
+.login {
+	position: absolute;
+	top: 323px;
+	left: calc(50% - 97px);
+	width: 195px;
+	height: 75px;
+	cursor: pointer;
+}
+
+.new-user {
+	white-space: pre-wrap;
+}
+
+.sign-up {
+	color: #060606;
+}
+
+.new-user-sign-container {
+	position: absolute;
+	top: 418px;
+	left: calc(50% - 131px);
+	font-size: 25px;
+	cursor: pointer;
+	color: #525252;
+}
+
+.email {
+	width: 67px;
+	position: absolute;
+	margin: 0 !important;
+	top: -2px;
+	left: 60px;
+	line-height: 150%;
+	display: inline-block;
+	z-index: 0;
+}
+
+.frame-child-sign {
+	width: 406px;
+	position: absolute;
+	margin: 0 !important;
+	bottom: -0.5px;
+	left: -0.5px;
+	background-color: #d9d9d9;
+	border-top: 1px dashed #6b3783;
+	box-sizing: border-box;
+	height: 1px;
+	opacity: 0.3;
+	z-index: 1;
+}
+
+.email-parent {
+	position: absolute;
+	top: calc(50% - 17px);
+	left: calc(50% - 194.5px);
+	width: 405px;
+	height: 34px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	min-height: 34px;
+}
+
+.iv-icon {
+	position: absolute;
+	top: calc(50% - 16px);
+	left: calc(50% - 228.5px);
+	width: 32px;
+	height: 32px;
+}
+
+.section {
+	width: 457px;
+	position: relative;
+	height: 34px;
+	min-height: 34px;
+}
+
+.password {
+	width: 111px;
+	position: absolute;
+	margin: 0 !important;
+	top: -2px;
+	left: 60px;
+	line-height: 150%;
+	display: inline-block;
+	z-index: 0;
+}
+
+.iv-icon1 {
+	position: absolute;
+	width: 7%;
+	top: calc(50% - 16px);
+	right: 93%;
+	left: 0%;
+	max-width: 100%;
+	overflow: hidden;
+	height: 32px;
+}
+
+.login2 {
+	position: absolute;
+	top: 175px;
+	left: calc(50% - 228px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+	text-align: left;
+	font-size: 24px;
+	color: #3d3c3c;
+}
+
+.icon {
+	width: 45px;
+	position: relative;
+	height: 45px;
+	object-fit: cover;
+}
+
+.parent {
+	position: absolute;
+	top: 554px;
+	left: calc(50% - 75px);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 60px;
+}
+
+.or1 {
+	position: absolute;
+	top: 0px;
+	left: calc(50% - 10.99px);
+	line-height: 150%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 25.7px;
+	height: 24px;
+}
+
+.subtract-icon {
+	position: relative;
+	width: 460px;
+	height: 1px;
+}
+
+.or {
+	position: absolute;
+	top: 490px;
+	left: calc(50% - 230px);
+	width: 460px;
+	height: 24px;
+	font-size: 20px;
+	color: #000;
+}
+
+.sign-in1 {
+	position: absolute;
+	top: 60px;
+	left: calc(50% - 95px);
+	font-size: 50px;
+	line-height: 150%;
+	color: #6b3783;
+}
+
+.sign-in {
+	top: calc(0%);
+	width: 654px;
+	position: relative;
+	height: 659px;
+	overflow: hidden;
+	background-image: url('/textures/svg/SignBG.svg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top;
+	text-align: center;
+	font-size: 30px;
+	color: rgba(0, 0, 0, 0.82);
+	font-family: Gabriela;
+}

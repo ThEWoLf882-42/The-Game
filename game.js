@@ -7,6 +7,8 @@ import { USERSPROFILE } from './UsersProfile';
 import { MAINCHAT, RECIVED, SENT } from './Chat';
 import { LEGEND, LEGEND_CHAT, LEGEND_LEADERBOARD } from './Legend';
 import { LEADERBOARDMAIN } from './Leaderboard';
+import { SIGNIN } from './Sign';
+
 import { LOREM } from './Lorem';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -112,6 +114,7 @@ class Game {
 	}
 
 	#addDOMElem() {
+		this.#addSignInCss2D();
 		this.#addHomeCss2D();
 		this.#addPanerCss2D();
 		this.#addSettingsCss2D();
@@ -119,6 +122,16 @@ class Game {
 		this.#addChatCss2D();
 		this.#addLegendCss2d();
 		this.#addLeaderboardCss2D();
+	}
+
+	#addSignInCss2D() {
+		const signContainer = document.createElement('div');
+		signContainer.className = 'sign-in';
+		signContainer.innerHTML = SIGNIN;
+
+		this.#css2DObject.sign = new CSS2DObject(signContainer);
+		this.#css2DObject.sign.name = 'sign in';
+		this.#scene.add(this.#css2DObject.sign);
 	}
 
 	#addHomeCss2D() {
