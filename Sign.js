@@ -38,14 +38,14 @@ export const SIGNUP = `<div class="sign-up">SIGN UP</div>
 	<div class="login-sign">
 		<div class="section">
 			<div class="email-parent">
-				<div class="email" contenteditable="true">Email</div>
+				<input type="email" class="username" placeholder="Email" />
 				<div class="frame-child-sign"></div>
 			</div>
 			<img class="iv-icon" alt="" src="/textures/svg/usser.svg" />
 		</div>
 		<div class="section">
 			<div class="email-parent">
-				<div class="email1" contenteditable="true">Username</div>
+				<input type="text" class="username" placeholder="Username" />
 				<div class="frame-child-sign"></div>
 			</div>
 			<img class="iv-icon" alt="" src="/textures/svg/usser.svg" />
