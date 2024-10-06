@@ -8,6 +8,7 @@ import { MAINCHAT, RECIVED, SENT } from './Chat';
 import { LEGEND, LEGEND_CHAT, LEGEND_LEADERBOARD } from './Legend';
 import { LEADERBOARDMAIN } from './Leaderboard';
 import { SIGNIN, SIGNUP } from './Sign';
+import { LOGIN } from './Login';
 
 import { LOREM } from './Lorem';
 
@@ -114,6 +115,7 @@ class Game {
 	}
 
 	#addDOMElem() {
+		this.#addLoginCss2D();
 		this.#addSignInCss2D();
 		this.#addSignUpCss2D();
 		this.#addHomeCss2D();
@@ -123,6 +125,16 @@ class Game {
 		this.#addChatCss2D();
 		this.#addLegendCss2d();
 		this.#addLeaderboardCss2D();
+	}
+
+	#addLoginCss2D() {
+		const loginContainer = document.createElement('div');
+		loginContainer.className = 'sign-inup';
+		loginContainer.innerHTML = LOGIN;
+
+		this.#css2DObject.login = new CSS2DObject(loginContainer);
+		this.#css2DObject.login.name = 'login';
+		this.#scene.add(this.#css2DObject.login);
 	}
 
 	#addSignInCss2D() {

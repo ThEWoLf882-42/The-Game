@@ -1995,3 +1995,34 @@ body {
 	color: #6b3783;
 	font-family: Gabriela;
 }
+
+.sb-icon {
+	width: 292.3px;
+	position: relative;
+	height: 109.6px;
+	overflow: hidden;
+	flex-shrink: 0;
+	object-fit: contain;
+}
+
+.sb-icon1 {
+	width: 290.1px;
+	position: relative;
+	height: 99.9px;
+	overflow: hidden;
+	flex-shrink: 0;
+	object-fit: contain;
+}
+
+.sign-inup {
+	position: absolute;
+	top: calc(0%);
+	left: calc(50% - 266px);
+	width: 292px;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+}
