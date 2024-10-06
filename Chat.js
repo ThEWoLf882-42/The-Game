@@ -85,7 +85,7 @@ export const MAINCHAT = `<div class="chat">
 		</div>
 		<div class="message-frame">
 			<img class="b-icon" alt="" src="/textures/svg/B.svg" />
-			<div class="message">Message</div>
+			<textarea class="message" placeholder="Message"></textarea>
 			<img class="vector-icon" alt="" src="/textures/svg/Vector.svg" />
 		</div>
 	</div>
