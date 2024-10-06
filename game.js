@@ -173,6 +173,28 @@ class Game {
 		this.#css2DObject.sbOverlay.element.addEventListener('click', e =>
 			this.#toggleSBook()
 		);
+		['sign', 'register'].forEach(ele => {
+			this.#css2DObject[ele].element
+				.querySelector('.parent')
+				.addEventListener('click', e => {
+					const btn = e.target.closest('.icon');
+					if (btn) {
+						const go42 = {
+							42: this.#login42,
+							google: this.#loginGoogle,
+						};
+						go42[btn.dataset.id]();
+					}
+				});
+		});
+	}
+
+	#login42() {
+		// console.log('this is 42');
+	}
+
+	#loginGoogle() {
+		// console.log('this is Google');
 	}
 
 	#addLoginCss2D() {

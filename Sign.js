@@ -32,8 +32,8 @@ export const SIGNIN = `<div class="sign-in">SIGN IN</div>
 	<img class="subtract-icon" alt="" src="/textures/svg/Subtract.svg" />
 </div>
 <div class="parent">
-	<img class="icon" alt="" src="/textures/svg/42.svg" />
-	<img class="icon" alt="" src="/textures/svg/Google.svg" />
+	<img class="icon" alt="" src="/textures/svg/42.svg" data-id="42"/>
+	<img class="icon" alt="" src="/textures/svg/Google.svg" data-id="google"/>
 </div>`;
 
 export const SIGNUP = `<div class="sign-up">SIGN UP</div>
@@ -84,6 +84,6 @@ export const SIGNUP = `<div class="sign-up">SIGN UP</div>
 	<img class="subtract-icon" alt="" src="/textures/svg/Subtract.svg" />
 </div>
 <div class="parent">
-	<img class="icon" alt="" src="/textures/svg/42.svg" />
-	<img class="icon" alt="" src="/textures/svg/Google.svg" />
+	<img class="icon" alt="" src="/textures/svg/42.svg" data-id="42"/>
+	<img class="icon" alt="" src="/textures/svg/Google.svg" data-id="google"/>
 </div>`;
