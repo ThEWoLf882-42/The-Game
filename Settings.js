@@ -21,5 +21,5 @@ export const SBOOK = `<img class="rectangle-icon17" alt="" src="/textures/svg/SB
 	</div>
 </div>
 <div class="settings-wrapper">
-	<div class="settings">Settings</div>
+	<div class="settings2">Settings</div>
 </div>`;

@@ -84,7 +84,7 @@ class Game {
 		this.#loadFont();
 		window.addEventListener('resize', () => this.#onWindowResize());
 		this.#animate();
-		this.Login();
+		this.#LoginPage();
 	}
 
 	#createScene() {
@@ -126,6 +126,7 @@ class Game {
 		this.#addChatCss2D();
 		this.#addLegendCss2d();
 		this.#addLeaderboardCss2D();
+		this.#addEventListeners();
 	}
 
 	#addLoginCss2D() {
@@ -135,7 +136,26 @@ class Game {
 
 		this.#css2DObject.login = new CSS2DObject(loginContainer);
 		this.#css2DObject.login.name = 'login';
-		this.#scene.add(this.#css2DObject.login);
+
+		const overlayContainer = document.createElement('div');
+		overlayContainer.className = 'overlay';
+		overlayContainer.onclick = this.#toggleSign.bind(this);
+
+		this.#css2DObject.signOverlay = new CSS2DObject(overlayContainer);
+		this.#css2DObject.signOverlay.name = 'overlay';
+	}
+
+	#switchSign(sign) {
+		this.#toggleSign();
+		[sign, 'signOverlay'].forEach(ele => {
+			this.#scene.add(this.#css2DObject[ele]);
+		});
+	}
+
+	#toggleSign() {
+		['sign', 'register', 'signOverlay'].forEach(ele => {
+			this.#scene.remove(this.#css2DObject[ele]);
+		});
 	}
 
 	#addSignInCss2D() {
@@ -145,7 +165,42 @@ class Game {
 
 		this.#css2DObject.sign = new CSS2DObject(signContainer);
 		this.#css2DObject.sign.name = 'sign in';
-		// this.#scene.add(this.#css2DObject.sign);
+	}
+
+	#addEventListeners() {
+		this.#css2DObject.sign.element
+			.querySelector('.sign-in-text')
+			.addEventListener('click', e => this.#switchSign('register'));
+		this.#css2DObject.sign.element
+			.querySelector('.login2')
+			.addEventListener('click', e => this.#Login());
+		this.#css2DObject.register.element
+			.querySelector('.sign-in-text')
+			.addEventListener('click', e => this.#switchSign('sign'));
+		this.#css2DObject.register.element
+			.querySelector('.login1')
+			.addEventListener('click', e => this.#Register());
+		this.#css2DObject.home.element.addEventListener('click', e => {
+			const btn = e.target.closest('.square2');
+			if (btn) this.#switchHome(btn.dataset.id);
+		});
+		this.#css2DObject.settings.element.addEventListener('click', () =>
+			this.#toggleSBook()
+		);
+		this.#css2DObject.profilepic.element.addEventListener('click', () =>
+			this.#toggleUsersProfile()
+		);
+		this.#css2DObject.chat.element
+			.querySelector('.vector-icon')
+			.addEventListener('click', e => {
+				this.#addRecivedMessage(LOREM);
+			});
+		this.#css2DObject.login.element.addEventListener('click', e => {
+			const btn = e.target.closest('.btn-sign');
+			if (btn) {
+				this.#switchSign(btn.dataset.id);
+			}
+		});
 	}
 
 	#addSignUpCss2D() {
@@ -155,7 +210,6 @@ class Game {
 
 		this.#css2DObject.register = new CSS2DObject(registerContainer);
 		this.#css2DObject.register.name = 'sign up';
-		// this.#scene.add(this.#css2DObject.register);
 	}
 
 	#addHomeCss2D() {
@@ -210,14 +264,14 @@ class Game {
 
 		const overlayContainer = document.createElement('div');
 		overlayContainer.className = 'overlay';
-		overlayContainer.onclick = this.toggleSBook.bind(this);
+		overlayContainer.onclick = this.#toggleSBook.bind(this);
 
 		this.#css2DObject.sbOverlay = new CSS2DObject(overlayContainer);
 		this.#css2DObject.sbOverlay.name = 'overlay';
 		this.#css2DObject.sbOverlay.renderOrder = 7;
 	}
 
-	toggleSBook() {
+	#toggleSBook() {
 		if (this.#scene.getObjectByName('sbook')) {
 			this.#scene.remove(this.#css2DObject.sbook);
 			this.#scene.remove(this.#css2DObject.sbOverlay);
@@ -249,14 +303,14 @@ class Game {
 
 		const overlayContainer = document.createElement('div');
 		overlayContainer.className = 'overlay';
-		overlayContainer.onclick = this.toggleUsersProfile.bind(this);
+		overlayContainer.onclick = this.#toggleUsersProfile.bind(this);
 
 		this.#css2DObject.upOverlay = new CSS2DObject(overlayContainer);
 		this.#css2DObject.upOverlay.name = 'overlay';
 		this.#css2DObject.upOverlay.renderOrder = 5;
 	}
 
-	toggleUsersProfile() {
+	#toggleUsersProfile() {
 		if (this.#scene.getObjectByName('usersprofile')) {
 			this.#scene.remove(this.#css2DObject.usersprofile);
 			this.#scene.remove(this.#css2DObject.upOverlay);
@@ -282,11 +336,6 @@ class Game {
 
 		this.#css2DObject.chat = new CSS2DObject(chatContainer);
 		this.#css2DObject.chat.name = 'chat';
-		this.#css2DObject.chat.element
-			.querySelector('.vector-icon')
-			.addEventListener('click', e => {
-				this.#addRecivedMessage(LOREM);
-			});
 	}
 
 	#addSentMessage(message) {
@@ -665,9 +714,36 @@ class Game {
 		});
 	}
 
-	Login() {}
+	#loggedin() {
+		return false;
+	}
 
-	switchHome(home) {
+	#Register() {
+		this.#HomePage();
+	}
+
+	#Login() {
+		this.#HomePage();
+	}
+
+	#LoginPage() {
+		['home', 'paner', 'settings', 'profilepic'].forEach(ele => {
+			this.#scene.remove(this.#css2DObject[ele]);
+		});
+		if (!this.#loggedin()) {
+			this.#scene.add(this.#css2DObject.login);
+		}
+	}
+
+	#HomePage() {
+		this.#toggleSign();
+		this.#scene.remove(this.#css2DObject.login);
+		['home', 'paner', 'settings', 'profilepic'].forEach(ele => {
+			this.#scene.add(this.#css2DObject[ele]);
+		});
+	}
+
+	#switchHome(home) {
 		const legendText = {
 			chat: LEGEND_CHAT,
 			leaderboard: LEGEND_LEADERBOARD,

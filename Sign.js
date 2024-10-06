@@ -21,7 +21,10 @@ export const SIGNIN = `<div class="sign-in">SIGN IN</div>
 			<img class="bsign-icon" alt="" src="/textures/svg/BSign.svg" />
 			<div class="login3">Login</div>
 		</div>
-		<div class="new-user-sign">New User? SIGN UP</div>
+		<div class="registered-sign-in-container">
+			<span class="registered">New User? </span>
+			<span class="sign-in-text">SIGN UP</span>
+		</div>
 	</div>
 </div>
 <div class="or">

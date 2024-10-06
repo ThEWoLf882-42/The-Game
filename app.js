@@ -1,9 +1,5 @@
 import game from './game';
 
-const homeContainer = document.querySelector('.home');
-const settingsContainer = document.querySelector('.settings');
-const usersProfileContainer = document.querySelector('.profile-pic-icon');
-
 const keyState = new Set();
 const KEY_UP = 'ArrowUp';
 const KEY_DOWN = 'ArrowDown';
@@ -31,25 +27,3 @@ function updateMovement() {
 	if (keyState.has(KEY_W)) game.moveUp();
 	if (keyState.has(KEY_S)) game.moveDown();
 }
-
-homeContainer.addEventListener('click', e => {
-	const btn = e.target.closest('.square2');
-	if (btn) {
-		const id = btn.dataset.id;
-		game.switchHome(id);
-	}
-});
-
-settingsContainer.addEventListener('click', e => {
-	const btn = e.target.closest('.settings');
-	if (btn) {
-		game.toggleSBook();
-	}
-});
-
-usersProfileContainer.addEventListener('click', e => {
-	const btn = e.target.closest('.profile-pic-icon');
-	if (btn) {
-		game.toggleUsersProfile();
-	}
-});
