@@ -139,7 +139,6 @@ class Game {
 
 		const overlayContainer = document.createElement('div');
 		overlayContainer.className = 'overlay';
-		overlayContainer.onclick = this.#toggleSign.bind(this);
 
 		this.#css2DObject.signOverlay = new CSS2DObject(overlayContainer);
 		this.#css2DObject.signOverlay.name = 'overlay';
@@ -201,6 +200,15 @@ class Game {
 				this.#switchSign(btn.dataset.id);
 			}
 		});
+		this.#css2DObject.signOverlay.element.addEventListener('click', e =>
+			this.#toggleSign()
+		);
+		this.#css2DObject.upOverlay.element.addEventListener('click', e =>
+			this.#toggleUsersProfile()
+		);
+		this.#css2DObject.sbOverlay.element.addEventListener('click', e =>
+			this.#toggleSBook()
+		);
 	}
 
 	#addSignUpCss2D() {
@@ -264,7 +272,6 @@ class Game {
 
 		const overlayContainer = document.createElement('div');
 		overlayContainer.className = 'overlay';
-		overlayContainer.onclick = this.#toggleSBook.bind(this);
 
 		this.#css2DObject.sbOverlay = new CSS2DObject(overlayContainer);
 		this.#css2DObject.sbOverlay.name = 'overlay';
@@ -303,7 +310,6 @@ class Game {
 
 		const overlayContainer = document.createElement('div');
 		overlayContainer.className = 'overlay';
-		overlayContainer.onclick = this.#toggleUsersProfile.bind(this);
 
 		this.#css2DObject.upOverlay = new CSS2DObject(overlayContainer);
 		this.#css2DObject.upOverlay.name = 'overlay';
