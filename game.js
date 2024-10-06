@@ -132,7 +132,7 @@ class Game {
 
 		this.#css2DObject.sign = new CSS2DObject(signContainer);
 		this.#css2DObject.sign.name = 'sign in';
-		// this.#scene.add(this.#css2DObject.sign);
+		this.#scene.add(this.#css2DObject.sign);
 	}
 
 	#addSignUpCss2D() {
@@ -142,7 +142,7 @@ class Game {
 
 		this.#css2DObject.register = new CSS2DObject(registerContainer);
 		this.#css2DObject.register.name = 'sign up';
-		this.#scene.add(this.#css2DObject.register);
+		// this.#scene.add(this.#css2DObject.register);
 	}
 
 	#addHomeCss2D() {
