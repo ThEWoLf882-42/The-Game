@@ -1715,7 +1715,8 @@ body {
 }
 
 .password {
-	width: 111px;
+	width: 325px;
+	height: 36px;
 	position: absolute;
 	margin: 0 !important;
 	top: -2px;
@@ -1723,6 +1724,24 @@ body {
 	line-height: 150%;
 	display: inline-block;
 	z-index: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	outline: none !important;
+	border: none !important;
+	box-sizing: border-box;
+	padding: 0%;
+	background: transparent;
+	font-size: 24px;
+	color: #3d3c3c;
+	font-family: Gabriela;
+}
+
+.password::placeholder {
+	font-size: 24px;
+	color: #3d3c3c;
+	font-family: Gabriela;
+	opacity: 1;
 }
 
 .iv-icon2 {
@@ -1877,7 +1896,7 @@ body {
 }
 
 .username {
-	width: 118px;
+	width: 325px;
 	position: absolute;
 	margin: 0 !important;
 	top: -2px;
@@ -1885,6 +1904,24 @@ body {
 	line-height: 150%;
 	display: inline-block;
 	z-index: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	outline: none !important;
+	border: none !important;
+	box-sizing: border-box;
+	padding: 0%;
+	background: transparent;
+	font-size: 24px;
+	color: #3d3c3c;
+	font-family: Gabriela;
+}
+
+.username::placeholder {
+	font-size: 24px;
+	color: #3d3c3c;
+	font-family: Gabriela;
+	opacity: 1;
 }
 
 .iv-icon1 {

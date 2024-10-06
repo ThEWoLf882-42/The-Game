@@ -3,14 +3,14 @@ export const SIGNIN = `<div class="sign-in">SIGN IN</div>
 	<div class="login-sign">
 		<div class="section">
 			<div class="email-parent">
-				<div class="username" contenteditable="true">Username</div>
+				<input type="text" class="username" placeholder="Username" />
 				<div class="frame-child-sign"></div>
 			</div>
 			<img class="iv-icon" alt="" src="/textures/svg/usser.svg" />
 		</div>
 		<div class="section">
 			<div class="email-parent">
-				<div class="password" contenteditable="true">Password</div>
+				<input type="password" class="password" placeholder="Password" />
 				<div class="frame-child-sign"></div>
 			</div>
 			<img class="iv-icon1" alt="" src="/textures/svg/pass.svg" />
@@ -52,14 +52,14 @@ export const SIGNUP = `<div class="sign-up">SIGN UP</div>
 		</div>
 		<div class="section">
 			<div class="email-parent">
-				<div class="password" contenteditable="true">Password</div>
+				<input type="password" class="password" placeholder="Password" />
 				<div class="frame-child-sign"></div>
 			</div>
 			<img class="iv-icon2" alt="" src="/textures/svg/pass.svg" />
 		</div>
 		<div class="section">
 			<div class="email-parent">
-				<div class="password1" contenteditable="true">Confirm Password</div>
+				<input type="password" class="password" placeholder="Confirm Password" />
 				<div class="frame-child-sign"></div>
 			</div>
 			<img class="iv-icon2" alt="" src="/textures/svg/pass.svg" />
