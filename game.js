@@ -84,6 +84,7 @@ class Game {
 		this.#loadFont();
 		window.addEventListener('resize', () => this.#onWindowResize());
 		this.#animate();
+		this.Login();
 	}
 
 	#createScene() {
@@ -664,30 +665,38 @@ class Game {
 		});
 	}
 
+	Login() {}
+
 	switchHome(home) {
 		const legendText = {
 			chat: LEGEND_CHAT,
 			leaderboard: LEGEND_LEADERBOARD,
 		};
 
-		this.#scene.remove(this.#css2DObject.chat);
-		this.#scene.remove(this.#css2DObject.leaderboard);
+		['game', 'chat', 'leaderboard'].forEach(ele => {
+			this.#scene.remove(this.#css2DObject[ele]);
+		});
 
 		this.#css2DObject.home.element.innerHTML = this.#home[home];
+
 		if (home !== 'home' && home !== 'game') {
 			this.#css2DObject.profilepic.element.classList.add(
 				'profile-pic-tran'
 			);
-			this.#css2DObject.legend.element.querySelector(
-				'.dont-bother-me'
-			).textContent = legendText[home];
-			this.#scene.add(this.#css2DObject.legend);
+
+			if (legendText[home]) {
+				this.#css2DObject.legend.element.querySelector(
+					'.dont-bother-me'
+				).textContent = legendText[home];
+				this.#scene.add(this.#css2DObject.legend);
+			}
 		} else {
 			this.#css2DObject.profilepic.element.classList.remove(
 				'profile-pic-tran'
 			);
 			this.#scene.remove(this.#css2DObject.legend);
 		}
+
 		this.#scene.add(this.#css2DObject[home]);
 	}
 }
