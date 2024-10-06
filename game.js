@@ -84,6 +84,7 @@ class Game {
 		this.#loadFont();
 		window.addEventListener('resize', () => this.#onWindowResize());
 		this.#animate();
+		this.#HomePage();
 		this.#LoginPage();
 	}
 
@@ -127,43 +128,6 @@ class Game {
 		this.#addLegendCss2d();
 		this.#addLeaderboardCss2D();
 		this.#addEventListeners();
-	}
-
-	#addLoginCss2D() {
-		const loginContainer = document.createElement('div');
-		loginContainer.className = 'sign-inup';
-		loginContainer.innerHTML = LOGIN;
-
-		this.#css2DObject.login = new CSS2DObject(loginContainer);
-		this.#css2DObject.login.name = 'login';
-
-		const overlayContainer = document.createElement('div');
-		overlayContainer.className = 'overlay';
-
-		this.#css2DObject.signOverlay = new CSS2DObject(overlayContainer);
-		this.#css2DObject.signOverlay.name = 'overlay';
-	}
-
-	#switchSign(sign) {
-		this.#toggleSign();
-		[sign, 'signOverlay'].forEach(ele => {
-			this.#scene.add(this.#css2DObject[ele]);
-		});
-	}
-
-	#toggleSign() {
-		['sign', 'register', 'signOverlay'].forEach(ele => {
-			this.#scene.remove(this.#css2DObject[ele]);
-		});
-	}
-
-	#addSignInCss2D() {
-		const signContainer = document.createElement('div');
-		signContainer.className = 'login';
-		signContainer.innerHTML = SIGNIN;
-
-		this.#css2DObject.sign = new CSS2DObject(signContainer);
-		this.#css2DObject.sign.name = 'sign in';
 	}
 
 	#addEventListeners() {
@@ -211,6 +175,43 @@ class Game {
 		);
 	}
 
+	#addLoginCss2D() {
+		const loginContainer = document.createElement('div');
+		loginContainer.className = 'sign-inup';
+		loginContainer.innerHTML = LOGIN;
+
+		this.#css2DObject.login = new CSS2DObject(loginContainer);
+		this.#css2DObject.login.name = 'login';
+
+		const overlayContainer = document.createElement('div');
+		overlayContainer.className = 'overlay';
+
+		this.#css2DObject.signOverlay = new CSS2DObject(overlayContainer);
+		this.#css2DObject.signOverlay.name = 'overlay';
+	}
+
+	#switchSign(sign) {
+		this.#toggleSign();
+		[sign, 'signOverlay'].forEach(ele => {
+			this.#scene.add(this.#css2DObject[ele]);
+		});
+	}
+
+	#toggleSign() {
+		['sign', 'register', 'signOverlay'].forEach(ele => {
+			this.#scene.remove(this.#css2DObject[ele]);
+		});
+	}
+
+	#addSignInCss2D() {
+		const signContainer = document.createElement('div');
+		signContainer.className = 'login';
+		signContainer.innerHTML = SIGNIN;
+
+		this.#css2DObject.sign = new CSS2DObject(signContainer);
+		this.#css2DObject.sign.name = 'sign in';
+	}
+
 	#addSignUpCss2D() {
 		const registerContainer = document.createElement('div');
 		registerContainer.className = 'register';
@@ -228,7 +229,6 @@ class Game {
 		this.#css2DObject.home = new CSS2DObject(homeContainer);
 		this.#css2DObject.home.name = 'home';
 		this.#css2DObject.home.renderOrder = 1;
-		this.#scene.add(this.#css2DObject.home);
 	}
 
 	#addLegendCss2d() {
@@ -249,7 +249,6 @@ class Game {
 		this.#css2DObject.paner = new CSS2DObject(panerContainer);
 		this.#css2DObject.paner.name = 'paner';
 		this.#css2DObject.paner.renderOrder = 2;
-		this.#scene.add(this.#css2DObject.paner);
 	}
 
 	#addSettingsCss2D() {
@@ -260,7 +259,6 @@ class Game {
 		this.#css2DObject.settings = new CSS2DObject(settingsContainer);
 		this.#css2DObject.settings.name = 'settings';
 		this.#css2DObject.settings.renderOrder = 3;
-		this.#scene.add(this.#css2DObject.settings);
 
 		const sbookContainer = document.createElement('div');
 		sbookContainer.className = 'sbook-1';
@@ -298,7 +296,6 @@ class Game {
 		this.#css2DObject.profilepic = new CSS2DObject(ppContainer);
 		this.#css2DObject.profilepic.name = 'profilepic';
 		this.#css2DObject.profilepic.renderOrder = 4;
-		this.#scene.add(this.#css2DObject.profilepic);
 
 		const usersProfileContainer = document.createElement('div');
 		usersProfileContainer.className = 'users-profile';
@@ -733,10 +730,10 @@ class Game {
 	}
 
 	#LoginPage() {
-		['home', 'paner', 'settings', 'profilepic'].forEach(ele => {
-			this.#scene.remove(this.#css2DObject[ele]);
-		});
 		if (!this.#loggedin()) {
+			['home', 'paner', 'settings', 'profilepic'].forEach(ele => {
+				this.#scene.remove(this.#css2DObject[ele]);
+			});
 			this.#scene.add(this.#css2DObject.login);
 		}
 	}
