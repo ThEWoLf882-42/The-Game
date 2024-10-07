@@ -799,7 +799,6 @@ class Game {
 			);
 
 			const data = await response.json();
-			console.log(data);
 			if (response.status === 201) {
 				this.#HomePage();
 			} else {
@@ -845,7 +844,6 @@ class Game {
 				const tokens = data.tokens;
 				localStorage.setItem('accessToken', tokens.access);
 				localStorage.setItem('refreshToken', tokens.refresh);
-				console.log('Tokens saved successfully!');
 				this.#HomePage();
 			} else {
 				console.error('Login failed.');
