@@ -743,6 +743,11 @@ class Game {
 		return false;
 	}
 
+	#validateEmail(email) {
+		const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return re.test(email);
+	}
+
 	async #Register() {
 		const { value: email } =
 			this.#css2DObject.register.element.querySelector('#email');
@@ -750,10 +755,74 @@ class Game {
 			this.#css2DObject.register.element.querySelector('#username');
 		const { value: password } =
 			this.#css2DObject.register.element.querySelector('#password');
-		const { value: confpassword } =
+		const { value: confirmPassword } =
 			this.#css2DObject.register.element.querySelector('#confpassword');
 
-		this.#HomePage();
+		const errors = [];
+
+		if (!email || !this.#validateEmail(email)) {
+			errors.push('Please enter a valid email address');
+		}
+
+		if (!username || username.length < 3) {
+			errors.push('Username must be at least 3 characters long');
+		}
+
+		if (!password || password.length < 8) {
+			errors.push('Password must be at least 8 characters long');
+		}
+
+		if (password !== confirmPassword) {
+			errors.push("Passwords don't match");
+		}
+
+		if (errors.length > 0) {
+			alert(errors.join('\n'));
+			return false;
+		}
+
+		try {
+			const response = await fetch(
+				'http://127.0.0.1:8000/api/register/',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						email,
+						username,
+						password,
+						confirmPassword,
+					}),
+				}
+			);
+
+			const data = await response.json();
+			console.log(data);
+			if (response.status === 201) {
+				this.#HomePage();
+			} else {
+				let errorMessage = 'Registration failed:\n';
+
+				const errorFields = [
+					'email',
+					'username',
+					'password',
+					'non_field_errors',
+				];
+				errorFields.forEach(field => {
+					if (data[field]) {
+						errorMessage += `${field}: ${data[field].join(', ')}\n`;
+					}
+				});
+
+				alert(errorMessage.trim());
+			}
+		} catch (error) {
+			console.error('Registration error:', error);
+			alert('An error occurred during registration.');
+		}
 	}
 
 	async #Login() {
