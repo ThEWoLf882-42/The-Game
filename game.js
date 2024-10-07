@@ -743,12 +743,48 @@ class Game {
 		return false;
 	}
 
-	#Register() {
+	async #Register() {
+		const { value: email } =
+			this.#css2DObject.register.element.querySelector('#email');
+		const { value: username } =
+			this.#css2DObject.register.element.querySelector('#username');
+		const { value: password } =
+			this.#css2DObject.register.element.querySelector('#password');
+		const { value: confpassword } =
+			this.#css2DObject.register.element.querySelector('#confpassword');
+
 		this.#HomePage();
 	}
 
-	#Login() {
-		this.#HomePage();
+	async #Login() {
+		try {
+			const { value: username } =
+				this.#css2DObject.sign.element.querySelector('#username');
+			const { value: password } =
+				this.#css2DObject.sign.element.querySelector('#password');
+
+			const response = await fetch('http://127.0.0.1:8000/api/login/', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ username, password }),
+			});
+
+			if (response.ok) {
+				const data = await response.json();
+				const tokens = data.tokens;
+				localStorage.setItem('accessToken', tokens.access);
+				localStorage.setItem('refreshToken', tokens.refresh);
+				console.log('Tokens saved successfully!');
+				this.#HomePage();
+			} else {
+				console.error('Login failed.');
+				alert('Login failed!');
+			}
+		} catch (error) {
+			console.error('Error:', error);
+		}
 	}
 
 	#LoginPage() {
