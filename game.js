@@ -743,6 +743,8 @@ class Game {
 	async #loggedin() {
 		try {
 			const access = localStorage.getItem('accessToken');
+			const refresh = localStorage.getItem('refreshToken');
+
 			if (access) {
 				const response = await fetch(
 					'http://127.0.0.1:8000/api/verify-token/',
@@ -756,13 +758,34 @@ class Game {
 						}),
 					}
 				);
-				const data = await response.json();
 				if (response.ok) {
 					return true;
+				} else {
+					if (refresh) {
+						const refreshResponse = await fetch(
+							'http://127.0.0.1:8000/api/refresh-token/',
+							{
+								method: 'POST',
+								headers: {
+									'Content-Type': 'application/json',
+								},
+								body: JSON.stringify({
+									refresh: refresh,
+								}),
+							}
+						);
+
+						if (refreshResponse.ok) {
+							const data = await refreshResponse.json();
+							localStorage.setItem('accessToken', data.access);
+							return true;
+						}
+					}
 				}
 			}
 			return false;
 		} catch (error) {
+			console.error('Error during authentication:', error);
 			return false;
 		}
 	}
