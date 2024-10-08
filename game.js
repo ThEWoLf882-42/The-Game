@@ -22,6 +22,7 @@ import {
 	CSS2DRenderer,
 	CSS2DObject,
 } from 'three/addons/renderers/CSS2DRenderer.js';
+import { log } from 'three/webgpu';
 
 class Game {
 	#camera;
@@ -739,8 +740,31 @@ class Game {
 		});
 	}
 
-	#loggedin() {
-		return false;
+	async #loggedin() {
+		try {
+			const access = localStorage.getItem('accessToken');
+			if (access) {
+				const response = await fetch(
+					'http://127.0.0.1:8000/api/verify-token/',
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							token: access,
+						}),
+					}
+				);
+				const data = await response.json();
+				if (response.ok) {
+					return true;
+				}
+			}
+			return false;
+		} catch (error) {
+			return false;
+		}
 	}
 
 	#validateEmail(email) {
@@ -854,8 +878,10 @@ class Game {
 		}
 	}
 
-	#LoginPage() {
-		if (!this.#loggedin()) {
+	async #LoginPage() {
+		const stat = await this.#loggedin();
+		console.log(stat);
+		if (!stat) {
 			['home', 'paner', 'settings', 'profilepic'].forEach(ele => {
 				this.#scene.remove(this.#css2DObject[ele]);
 			});
