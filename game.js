@@ -157,7 +157,9 @@ class Game {
 		this.#css2DObject.chat.element
 			.querySelector('.vector-icon')
 			.addEventListener('click', e => {
-				this.#addRecivedMessage(LOREM);
+				const message = this.#css2DObject.chat.element
+					.querySelector('.message').value
+				this.#addRecivedMessage(message);
 			});
 		this.#css2DObject.login.element.addEventListener('click', e => {
 			const btn = e.target.closest('.btn-sign');
@@ -741,6 +743,7 @@ class Game {
 	}
 
 	async #loggedin() {
+		return true
 		try {
 			const access = localStorage.getItem('accessToken');
 			const refresh = localStorage.getItem('refreshToken');
@@ -903,7 +906,6 @@ class Game {
 
 	async #LoginPage() {
 		const stat = await this.#loggedin();
-		console.log(stat);
 		if (!stat) {
 			['home', 'paner', 'settings', 'profilepic'].forEach(ele => {
 				this.#scene.remove(this.#css2DObject[ele]);
