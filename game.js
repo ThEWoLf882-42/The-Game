@@ -363,8 +363,8 @@ class Game {
 	}
 
 	#handelChat() {
-		const message = this.#css2DObject.chat.element.querySelector('.message').value
-		this.#addRecivedMessage(message);
+		const message = this.#css2DObject.chat.element.querySelector('.message').value.trim()
+		if (message) this.#addRecivedMessage(message);
 	}
 
 	#addSentMessage(message) {
