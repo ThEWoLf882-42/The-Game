@@ -156,11 +156,7 @@ class Game {
 		);
 		this.#css2DObject.chat.element
 			.querySelector('.vector-icon')
-			.addEventListener('click', e => {
-				const message = this.#css2DObject.chat.element
-					.querySelector('.message').value
-				this.#addRecivedMessage(message);
-			});
+			.addEventListener('click', () => { this.#handelChat() });
 		this.#css2DObject.login.element.addEventListener('click', e => {
 			const btn = e.target.closest('.btn-sign');
 			if (btn) {
@@ -364,6 +360,11 @@ class Game {
 
 		this.#css2DObject.chat = new CSS2DObject(chatContainer);
 		this.#css2DObject.chat.name = 'chat';
+	}
+
+	#handelChat() {
+		const message = this.#css2DObject.chat.element.querySelector('.message').value
+		this.#addRecivedMessage(message);
 	}
 
 	#addSentMessage(message) {
