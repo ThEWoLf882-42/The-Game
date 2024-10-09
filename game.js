@@ -156,7 +156,9 @@ class Game {
 		);
 		this.#css2DObject.chat.element
 			.querySelector('.vector-icon')
-			.addEventListener('click', () => { this.#handelChat() });
+			.addEventListener('click', () => {
+				this.#handelChat();
+			});
 		this.#css2DObject.login.element.addEventListener('click', e => {
 			const btn = e.target.closest('.btn-sign');
 			if (btn) {
@@ -363,7 +365,8 @@ class Game {
 	}
 
 	#handelChat() {
-		const message = this.#css2DObject.chat.element.querySelector('.message').value
+		const message =
+			this.#css2DObject.chat.element.querySelector('.message').value;
 		this.#addRecivedMessage(message);
 	}
 
@@ -744,7 +747,6 @@ class Game {
 	}
 
 	async #loggedin() {
-		return true
 		try {
 			const access = localStorage.getItem('accessToken');
 			const refresh = localStorage.getItem('refreshToken');
