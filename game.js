@@ -4,7 +4,7 @@ import { HOME, GAME, CHAT, LEADERBOARD } from './home';
 import { PANER } from './Paner';
 import { SBOOK, SETTINGS } from './Settings';
 import { USERSPROFILE } from './UsersProfile';
-import { MAINCHAT, RECIVED, SENT } from './Chat';
+import { ELEMENT, MAINCHAT, RECIVED, SENT } from './Chat';
 import { LEGEND, LEGEND_CHAT, LEGEND_LEADERBOARD } from './Legend';
 import { LEADERBOARDMAIN } from './Leaderboard';
 import { SIGNIN, SIGNUP } from './Sign';
@@ -48,7 +48,7 @@ class Game {
 	#scoreR = 0;
 
 	#velocity = 30;
-	#factor = 1.5;
+	#factor = 1.8;
 	#ballDirection = new THREE.Vector3();
 	#minDir = 0.69;
 	#playerDirection = 0;
@@ -64,6 +64,9 @@ class Game {
 
 	#lastFrameTime = 0;
 	#frameRate = 60;
+
+	#chatWebSocket = {};
+	#chatuser;
 
 	constructor() {
 		this.#home = {
@@ -157,7 +160,7 @@ class Game {
 		this.#css2DObject.chat.element
 			.querySelector('.vector-icon')
 			.addEventListener('click', () => {
-				this.#handelChat();
+				this.#handelChatSent();
 			});
 		this.#css2DObject.login.element.addEventListener('click', e => {
 			const btn = e.target.closest('.btn-sign');
@@ -336,6 +339,102 @@ class Game {
 		this.#css2DObject.upOverlay.renderOrder = 5;
 	}
 
+	async #loadChat(user) {
+		try {
+			this.#css2DObject.chat.element.querySelector(
+				'.recived-parent'
+			).innerHTML = '';
+			const response = await fetch(
+				`http://127.0.0.1:8000/chat/room/houda/${user}/`,
+				{
+					method: 'GET',
+					// headers: {
+					// 	'Authorization': `Bearer ${yourToken}`,
+					// 	'Content-Type': 'application/json'
+					// },
+				}
+			);
+			const data = await response.json();
+			if (response.ok) {
+				data.messages.forEach(message => {
+					if (message.sender === user)
+						this.#addRecivedMessage(message.content);
+					else this.#addSentMessage(message.content);
+				});
+			}
+			this.#chatuser = user;
+		} catch (error) {
+			alert(error);
+		}
+	}
+
+	#addChatUsers(users) {
+		users.forEach(user => {
+			if (user.username !== 'houda') {
+				const userTemp = document.createElement('template');
+				userTemp.innerHTML = ELEMENT.trim();
+
+				const userHTML = userTemp.content.firstChild;
+				userHTML.querySelector(
+					'.element-child'
+				).src = `/textures/svg/Rectangle 1.svg`;
+				userHTML.querySelector(
+					'.sword-prowess-lv'
+				).textContent = `${user.username}`;
+				userHTML.querySelector(
+					'.indicator-icon1'
+				).src = `/textures/svg/Indicator online.svg`;
+				userHTML.querySelector(
+					'.indicator-icon'
+				).src = `/textures/svg/Indicator online.svg`;
+				this.#css2DObject.chat.element
+					.querySelector('.element-parent')
+					.appendChild(userHTML);
+
+				userHTML.addEventListener('click', e => {
+					const user = e.target
+						.closest('.element')
+						.querySelector('.sword-prowess-lv').textContent;
+					if (user) this.#loadChat(user);
+				});
+
+				const room = ['houda', user.username].sort().join('_');
+				this.#chatWebSocket[user.username] = new WebSocket(
+					`ws://127.0.0.1:8000/ws/chat/${room}/`
+				);
+				this.#chatWebSocket[user.username].onmessage = e => {
+					const data = JSON.parse(e.data);
+					if (user.username === this.#chatuser) {
+						if (data.sender === user)
+							this.#addRecivedMessage(data.message);
+						else this.#addSentMessage(data.message);
+					}
+				};
+			}
+		});
+	}
+
+	async #chatUsers() {
+		try {
+			const response = await fetch(
+				'http://127.0.0.1:8000/accounts/users/',
+				{
+					method: 'GET',
+					// headers: {
+					// 	'Authorization': `Bearer ${yourToken}`,
+					// 	'Content-Type': 'application/json'
+					// },
+				}
+			);
+			const data = await response.json();
+			if (response.ok) {
+				this.#addChatUsers(data.users);
+			}
+		} catch (error) {
+			alert(error);
+		}
+	}
+
 	#toggleUsersProfile() {
 		if (this.#scene.getObjectByName('usersprofile')) {
 			this.#scene.remove(this.#css2DObject.usersprofile);
@@ -364,11 +463,19 @@ class Game {
 		this.#css2DObject.chat.name = 'chat';
 	}
 
-	#handelChat() {
+	#handelChatSent() {
 		const message = this.#css2DObject.chat.element
 			.querySelector('.message')
 			.value.trim();
-		if (message) this.#addRecivedMessage(message);
+		if (message && this.#chatWebSocket[this.#chatuser]) {
+			this.#chatWebSocket[this.#chatuser].send(
+				JSON.stringify({
+					message: message,
+					username: 'houda',
+				})
+			);
+			this.#css2DObject.chat.element.querySelector('.message').value = '';
+		}
 	}
 
 	#addSentMessage(message) {
@@ -748,6 +855,7 @@ class Game {
 	}
 
 	async #loggedin() {
+		return true;
 		try {
 			const access = localStorage.getItem('accessToken');
 			const refresh = localStorage.getItem('refreshToken');
@@ -955,6 +1063,7 @@ class Game {
 			);
 			this.#scene.remove(this.#css2DObject.legend);
 		}
+		if (home === 'chat') this.#chatUsers();
 
 		this.#scene.add(this.#css2DObject[home]);
 	}
