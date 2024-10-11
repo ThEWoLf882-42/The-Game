@@ -49,6 +49,7 @@ class Game {
 
 	#velocity = 30;
 	#factor = 1.8;
+	#factor = 1.8;
 	#ballDirection = new THREE.Vector3();
 	#minDir = 0.69;
 	#playerDirection = 0;
@@ -463,6 +464,7 @@ class Game {
 		this.#css2DObject.chat.name = 'chat';
 	}
 
+	#handelChatSent() {
 	#handelChatSent() {
 		const message = this.#css2DObject.chat.element
 			.querySelector('.message')
@@ -1063,7 +1065,6 @@ class Game {
 			);
 			this.#scene.remove(this.#css2DObject.legend);
 		}
-		if (home === 'chat') this.#chatUsers();
 
 		this.#scene.add(this.#css2DObject[home]);
 	}
