@@ -10,8 +10,6 @@ import { LEADERBOARDMAIN } from './Leaderboard';
 import { SIGNIN, SIGNUP } from './Sign';
 import { LOGIN } from './Login';
 
-import { LOREM } from './Lorem';
-
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
@@ -22,7 +20,6 @@ import {
 	CSS2DRenderer,
 	CSS2DObject,
 } from 'three/addons/renderers/CSS2DRenderer.js';
-import { log } from 'three/webgpu';
 
 class Game {
 	#camera;
@@ -48,7 +45,6 @@ class Game {
 	#scoreR = 0;
 
 	#velocity = 30;
-	#factor = 1.8;
 	#factor = 1.8;
 	#ballDirection = new THREE.Vector3();
 	#minDir = 0.69;
@@ -464,7 +460,6 @@ class Game {
 		this.#css2DObject.chat.name = 'chat';
 	}
 
-	#handelChatSent() {
 	#handelChatSent() {
 		const message = this.#css2DObject.chat.element
 			.querySelector('.message')
@@ -1065,6 +1060,7 @@ class Game {
 			);
 			this.#scene.remove(this.#css2DObject.legend);
 		}
+		if (home === 'chat') this.#chatUsers();
 
 		this.#scene.add(this.#css2DObject[home]);
 	}
