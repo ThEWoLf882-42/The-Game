@@ -4,7 +4,7 @@ import { HOME, GAME, CHAT, LEADERBOARD } from './home';
 import { PANER } from './Paner';
 import { SBOOK, SETTINGS } from './Settings';
 import { USERSPROFILE } from './UsersProfile';
-import { MAINCHAT, RECIVED, SENT } from './Chat';
+import { ELEMENT, MAINCHAT, RECIVED, SENT } from './Chat';
 import { LEGEND, LEGEND_CHAT, LEGEND_LEADERBOARD } from './Legend';
 import { LEADERBOARDMAIN } from './Leaderboard';
 import { SIGNIN, SIGNUP } from './Sign';
@@ -48,7 +48,7 @@ class Game {
 	#scoreR = 0;
 
 	#velocity = 30;
-	#factor = 1.5;
+	#factor = 1.8;
 	#ballDirection = new THREE.Vector3();
 	#minDir = 0.69;
 	#playerDirection = 0;
@@ -157,7 +157,7 @@ class Game {
 		this.#css2DObject.chat.element
 			.querySelector('.vector-icon')
 			.addEventListener('click', () => {
-				this.#handelChat();
+				this.#handelChatSent();
 			});
 		this.#css2DObject.login.element.addEventListener('click', e => {
 			const btn = e.target.closest('.btn-sign');
@@ -336,6 +336,44 @@ class Game {
 		this.#css2DObject.upOverlay.renderOrder = 5;
 	}
 
+	#addChatUsers(users) {
+		const userTemp = document.createElement('template')
+		userTemp.innerHTML = ELEMENT.trim();
+
+		const userHTML = userTemp.content.firstChild
+		userHTML.querySelector('.element-child').src = `/textures/svg/Rectangle 1.svg`
+		userHTML.querySelector('.sword-prowess-lv').textContent = `Admin`
+		userHTML.querySelector('.indicator-icon1').src = `/textures/svg/Indicator online.svg`
+		userHTML.querySelector('.indicator-icon').src = `/textures/svg/Indicator online.svg`
+		this.#css2DObject.chat.element.querySelector('.element-parent').appendChild(userHTML)
+
+		userHTML.addEventListener('click', e => {
+			const btn = e.target.closest('.element')
+			console.log(btn);
+		})
+	}
+
+	async #chatUsers() {
+		try {
+			const response = await fetch(
+				'http://127.0.0.1:8000/api/verify-token/',
+				{
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}
+			);
+			const data = await response.json();
+			if (response.ok) {
+				// this.#addChatUsers();
+				return true;
+			}
+		} catch (error) {
+			console.error('Chat:', error);
+		}
+	}
+
 	#toggleUsersProfile() {
 		if (this.#scene.getObjectByName('usersprofile')) {
 			this.#scene.remove(this.#css2DObject.usersprofile);
@@ -364,7 +402,7 @@ class Game {
 		this.#css2DObject.chat.name = 'chat';
 	}
 
-	#handelChat() {
+	#handelChatSent() {
 		const message = this.#css2DObject.chat.element
 			.querySelector('.message')
 			.value.trim();
@@ -748,6 +786,7 @@ class Game {
 	}
 
 	async #loggedin() {
+		return true;
 		try {
 			const access = localStorage.getItem('accessToken');
 			const refresh = localStorage.getItem('refreshToken');
@@ -955,6 +994,7 @@ class Game {
 			);
 			this.#scene.remove(this.#css2DObject.legend);
 		}
+		if (home === 'chat') this.#chatUsers()
 
 		this.#scene.add(this.#css2DObject[home]);
 	}
