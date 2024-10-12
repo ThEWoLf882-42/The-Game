@@ -65,6 +65,8 @@ class Game {
 	#chatWebSocket = {};
 	#chatuser;
 
+	#loggedUser;
+
 	constructor() {
 		this.#home = {
 			home: HOME,
@@ -158,6 +160,11 @@ class Game {
 			.querySelector('.vector-icon')
 			.addEventListener('click', () => {
 				this.#handelChatSent();
+			});
+		this.#css2DObject.chat.element
+			.querySelector('.message')
+			.addEventListener('keydown', e => {
+				if (e.key === 'Enter') this.#handelChatSent();
 			});
 		this.#css2DObject.login.element.addEventListener('click', e => {
 			const btn = e.target.closest('.btn-sign');
@@ -342,13 +349,15 @@ class Game {
 				'.recived-parent'
 			).innerHTML = '';
 			const response = await fetch(
-				`http://127.0.0.1:8000/chat/room/houda/${user}/`,
+				`http://localhost:8000/chat/room/${this.#loggedUser}/${user}/`,
 				{
 					method: 'GET',
-					// headers: {
-					// 	'Authorization': `Bearer ${yourToken}`,
-					// 	'Content-Type': 'application/json'
-					// },
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							'accessToken'
+						)}`,
+						// 	'Content-Type': 'application/json'
+					},
 				}
 			);
 			const data = await response.json();
@@ -357,6 +366,12 @@ class Game {
 					if (message.sender === user)
 						this.#addRecivedMessage(message.content);
 					else this.#addSentMessage(message.content);
+					const chatContainer =
+						this.#css2DObject.chat.element.querySelector(
+							'.recived-parent'
+						);
+					const lastMessage = chatContainer.lastChild;
+					lastMessage.scrollIntoView({ behavior: 'auto' });
 				});
 			}
 			this.#chatuser = user;
@@ -366,8 +381,11 @@ class Game {
 	}
 
 	#addChatUsers(users) {
+		this.#css2DObject.chat.element.querySelector(
+			'.element-parent'
+		).innerHTML = '';
 		users.forEach(user => {
-			if (user.username !== 'houda') {
+			if (user.username !== this.#loggedUser) {
 				const userTemp = document.createElement('template');
 				userTemp.innerHTML = ELEMENT.trim();
 
@@ -395,16 +413,22 @@ class Game {
 					if (user) this.#loadChat(user);
 				});
 
-				const room = ['houda', user.username].sort().join('_');
+				const room = [this.#loggedUser, user.username].sort().join('_');
 				this.#chatWebSocket[user.username] = new WebSocket(
-					`ws://127.0.0.1:8000/ws/chat/${room}/`
+					`ws://localhost:8000/ws/chat/${room}/`
 				);
 				this.#chatWebSocket[user.username].onmessage = e => {
 					const data = JSON.parse(e.data);
 					if (user.username === this.#chatuser) {
-						if (data.sender === user)
+						if (data.sender === user.username)
 							this.#addRecivedMessage(data.message);
 						else this.#addSentMessage(data.message);
+						const chatContainer =
+							this.#css2DObject.chat.element.querySelector(
+								'.recived-parent'
+							);
+						const lastMessage = chatContainer.lastChild;
+						lastMessage.scrollIntoView({ behavior: 'smooth' });
 					}
 				};
 			}
@@ -413,16 +437,15 @@ class Game {
 
 	async #chatUsers() {
 		try {
-			const response = await fetch(
-				'http://127.0.0.1:8000/accounts/users/',
-				{
-					method: 'GET',
-					// headers: {
-					// 	'Authorization': `Bearer ${yourToken}`,
+			const response = await fetch('http://localhost:8000/api/users/', {
+				method: 'GET',
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem(
+						'accessToken'
+					)}`,
 					// 	'Content-Type': 'application/json'
-					// },
-				}
-			);
+				},
+			});
 			const data = await response.json();
 			if (response.ok) {
 				this.#addChatUsers(data.users);
@@ -465,10 +488,18 @@ class Game {
 			.querySelector('.message')
 			.value.trim();
 		if (message && this.#chatWebSocket[this.#chatuser]) {
+			this.#css2DObject.chat.element
+				.querySelector('.message')
+				.addEventListener('keyup', e => {
+					if (e.key === 'Enter')
+						this.#css2DObject.chat.element.querySelector(
+							'.message'
+						).value = '';
+				});
 			this.#chatWebSocket[this.#chatuser].send(
 				JSON.stringify({
 					message: message,
-					username: 'houda',
+					username: this.#loggedUser,
 				})
 			);
 			this.#css2DObject.chat.element.querySelector('.message').value = '';
@@ -852,14 +883,13 @@ class Game {
 	}
 
 	async #loggedin() {
-		return true;
 		try {
 			const access = localStorage.getItem('accessToken');
 			const refresh = localStorage.getItem('refreshToken');
 
 			if (access) {
 				const response = await fetch(
-					'http://127.0.0.1:8000/api/verify-token/',
+					'http://localhost:8000/api/verify-token/',
 					{
 						method: 'POST',
 						headers: {
@@ -871,11 +901,13 @@ class Game {
 					}
 				);
 				if (response.ok) {
+					const data = await response.json();
+					this.#loggedUser = data.username;
 					return true;
 				} else {
 					if (refresh) {
 						const refreshResponse = await fetch(
-							'http://127.0.0.1:8000/api/refresh-token/',
+							'http://localhost:8000/api/refresh-token/',
 							{
 								method: 'POST',
 								headers: {
@@ -889,6 +921,7 @@ class Game {
 
 						if (refreshResponse.ok) {
 							const data = await refreshResponse.json();
+							this.#loggedUser = data.username;
 							localStorage.setItem('accessToken', data.access);
 							return true;
 						}
@@ -942,7 +975,7 @@ class Game {
 
 		try {
 			const response = await fetch(
-				'http://127.0.0.1:8000/api/register/',
+				'http://localhost:8000/api/register/',
 				{
 					method: 'POST',
 					headers: {
@@ -958,7 +991,10 @@ class Game {
 			);
 
 			const data = await response.json();
-			if (response.status === 201) {
+			if (response.ok) {
+				localStorage.setItem('accessToken', data.access);
+				localStorage.setItem('refreshToken', data.refresh);
+				this.#loggedUser = data.username;
 				this.#HomePage();
 			} else {
 				let errorMessage = 'Registration failed:\n';
@@ -990,7 +1026,7 @@ class Game {
 			const { value: password } =
 				this.#css2DObject.sign.element.querySelector('#password');
 
-			const response = await fetch('http://127.0.0.1:8000/api/login/', {
+			const response = await fetch('http://localhost:8000/api/login/', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -1001,6 +1037,7 @@ class Game {
 			if (response.ok) {
 				const data = await response.json();
 				const tokens = data.tokens;
+				this.#loggedUser = tokens.username;
 				localStorage.setItem('accessToken', tokens.access);
 				localStorage.setItem('refreshToken', tokens.refresh);
 				this.#HomePage();
