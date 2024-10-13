@@ -773,7 +773,6 @@ class Game {
 	}
 
 	#handleBallWallCollision() {
-
 		this.#ballDirection.y = -this.#ballDirection.y;
 	}
 
