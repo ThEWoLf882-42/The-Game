@@ -45,7 +45,7 @@ class Game {
 	#scoreR = 0;
 
 	#velocity = 30;
-	#factor = 1.8;
+	#factor = 2;
 	#ballDirection = new THREE.Vector3();
 	#minDir = 0.69;
 	#playerDirection = 0;
@@ -742,6 +742,7 @@ class Game {
 	}
 
 	#handleBallWallCollision() {
+
 		this.#ballDirection.y = -this.#ballDirection.y;
 	}
 
